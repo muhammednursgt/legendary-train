@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiğit Elektrik - Profesyonel Hizmet Altyapısı</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background-color: #111111; color: #ffffff; line-height: 1.6; }
+        header { background-color: #1a1a1a; border-bottom: 3px solid #f39c12; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: bold; color: #f39c12; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: #ffffff; }
+        .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-toggle .line { height: 3px; width: 100%; background-color: #f39c12; border-radius: 3px; }
+        .nav-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #1a1a1a; border-bottom: 2px solid #f39c12; padding: 10px 0; }
+        .nav-menu.active { display: block; }
+        .nav-menu a { display: block; color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-bottom: 1px solid #2d2d2d; cursor: pointer; }
+        .container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .page-section { display: none; }
+        .page-section.active-page { display: block; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80') center/cover; padding: 40px 20px; text-align: center; border-radius: 8px; margin-bottom: 25px; border: 1px solid #333; }
+        .hero h1 { color: #f39c12; font-size: 26px; margin-bottom: 10px; }
+        .badge { background-color: #e74c3c; color: white; padding: 5px 15px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-size: 13px; }
+        .card { background-color: #1a1a1a; border: 1px solid #333; border-left: 5px solid #f39c12; padding: 20px; margin-bottom: 20px; border-radius: 4px; }
+        .card h3 { color: #f39c12; margin-top: 0; font-size: 20px; }
+        .btn { display: block; width: 100%; background-color: #f39c12; color: #111111; padding: 12px; font-weight: bold; text-decoration: none; border-radius: 4px; margin-top: 15px; text-align: center; border: none; font-size: 16px; cursor: pointer; }
+        .btn-whatsapp { background-color: #25D366; color: white; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #f39c12; font-weight: bold; }
+        .form-control { width: 100%; padding: 12px; background-color: #222; border: 1px solid #444; color: white; border-radius: 4px; font-size: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background-color: #1a1a1a; font-size: 14px; }
+        table, th, td { border: 1px solid #333; }
+        th { background-color: #f39c12; color: #111111; padding: 10px; text-align: left; }
+        td { padding: 10px; }
+        footer { background-color: #1a1a1a; text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #333; color: #888; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">YİĞİT <span>ELEKTRİK</span></div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="line"></div><div class="line"></div><div class="line"></div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a onclick="showPage('ana-sayfa')">🏠 Ana Sayfa (İletişim)</a>
+            <a onclick="showPage('randevu-al')">📅 Randevu Al</a>
+            <a onclick="showPage('urunler')">🛍️ Sanal Alışveriş / Ürünler</a>
+            <a onclick="showPage('kurumsal-giris')">🔒 Kurumsal Giriş</a>
+        </div>
+    </header>
+    <div class="container">
+        <div id="ana-sayfa" class="page-section active-page">
+            <div class="hero">
+                <div class="badge">🚨 7/24 ACİL HİZMET SERVİSİ İSTASYONU</div>
+                <h1>Evinizde Elektrik Sorunu mu Var?</h1>
+                <p>Yiğit Elektrik tek bir tıkla kapınızda. Profesyonel, hızlı ve güvenilir hizmet.</p>
+                <a href="https://wa.me/905449296577" class="btn btn-whatsapp" target="_blank">🟢 WhatsApp Acil Destek Hattı (0544 929 65 77)</a>
+            </div>
+            <div class="card">
+                <h3>📍 İletişim & Adres Bilgileri</h3>
+                <p><strong>Adres:</strong> Şah Mahallesi, 302. Sokak, No: 2/A<br>(N5 Market Arkası, Metin Sürücü Kursu Yanı)</p>
+                <p><strong>Telefon:</strong> 0544 929 65 77</p>
+                <p><strong>Çalışma Saatleri:</strong> 7 Gün 24 Saat Açık</p>
+            </div>
+        </div>
+        <div id="randevu-al" class="page-section">
+            <div class="card">
+                <h3>📅 Online Randevu Oluşturma</h3>
+                <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" class="form-control" placeholder="Adınızı girin"></div>
+                <div class="form-group"><label>Telefon Numaranız:</label><input type="tel" class="form-control" placeholder="05xx xxx xx xx"></div>
+                <div class="form-group"><label>Randevu Tarihi & Saati:</label><input type="datetime-local" class="form-control"></div>
+                <div class="form-group"><label>Arıza / Talep Detayı:</label><textarea class="form-control" rows="3" placeholder="Sorununuzu kısaca yazın..."></textarea></div>
+                <button class="btn" onclick="alert('Randevu talebiniz başarıyla alındı!')">Randevu Talebi Gönder</button>
+            </div>
+        </div>
+        <div id="urunler" class="page-section">
+            <div class="card">
+                <h3>🛍️ Sanal Mağaza & Alışveriş</h3>
+                <table>
+                    <thead><tr><th>Ürün</th><th>Ürün Adı</th><th>Fiyat</th><th>Durum</th></tr></thead>
+                    <tbody>
+                        <tr><td>⚡</td><td>Schneider 16A Otomatik Sigorta</td><td>120 TL</td><td>Stokta Var</td></tr>
+                        <tr><td>💡</td><td>Philips 9W Led Ampul (Beyaz)</td><td>45 TL</td><td>Stokta Var</td></tr>
+                        <tr><td>🔌</td><td>Viko Üçlü Priz 3 Metre</td><td>180 TL</td><td>Stokta Var</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="kurumsal-giris" class="page-section">
+            <div class="card" style="border: 2px dashed #f39c12;">
+                <h3>🔒 Kurumsal Giriş & Yönetim Paneli</h3>
+                <div id="login-box">
+                    <div class="form-group"><label>Sistem Şifresi:</label><input type="password" id="passInput" class="form-control" placeholder="Şifreyi giriniz..."></div>
+                    <button class="btn" onclick="checkAdminPassword()">Sisteme Giriş Yap</button>
+                </div>
+                <div id="admin-panel" style="display: none; margin-top: 20px; border-top: 1px solid #444; padding-top: 20px;">
+                    <h4 style="color: #25D366;">✅ Giriş Başarılı! Yönetim Modu Aktif.</h4>
+                    <div class="form-group"><label>Yeni Ürün Adı:</label><input type="text" class="form-control" placeholder="Ürün adı yazın"></div>
+                    <div class="form-group"><label>Fiyat (TL):</label><input type="number" class="form-control" placeholder="Fiyat girin"></div>
+                    <button class="btn" style="background-color: #25D366; color: black;" onclick="alert('Yeni ürün sanal mağazaya başarıyla eklendi!')">Ürünü Vitrine Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>© 2026 Yiğit Elektrik - Tüm Hakları Saklıdır.</footer>
+    <script>
+        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName('page-section');
+            for (var i = 0; i < pages.length; i++) { pages[i].classList.remove('active-page'); }
+            document.getElementById(pageId).classList.add('active-page');
+            document.getElementById('navMenu').classList.remove('active');
+            window.scrollTo(0,0);
+        }
+        function checkAdminPassword() {
+            var password = document.getElementById('passInput').value;
+            if(password === "Bereket2888") {
+                document.getElementById('admin-panel').style.display = 'block';
+                document.getElementById('login-box').style.display = 'none';
+            } else { alert('Hatalı Şifre!'); }
+        }
+    </script>
+</body>
+</html>
