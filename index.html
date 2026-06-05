@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiğit Elektrik | Cizre Elektrik Arıza, Tesisat & Randevu</title>
+    <title>Yiğit Elektrik | Cizre Elektrik E-Ticaret, Acil Servis & Randevu</title>
     <style>
+        /* Orijinal Sade ve Karanlık Tema */
         * {
             margin: 0;
             padding: 0;
@@ -13,338 +14,555 @@
         }
 
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: #1a1a1a;
+            color: #ffffff;
             line-height: 1.6;
         }
 
-        header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 4px solid #f59e0b;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        /* Üst Bar ve 3 Nokta Menüsü */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #111111;
+            border-bottom: 2px solid #f59e0b;
+            position: relative;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
         }
 
-        header p {
-            font-size: 1.2rem;
-            color: #bfdbfe;
+        .menu-3nokta {
+            cursor: pointer;
+            font-size: 24px;
+            color: #f59e0b;
+            padding: 5px 10px;
+            user-select: none;
+        }
+
+        /* Gizli Açılır Menü */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            width: 160px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-menu button {
+            width: 100%;
+            padding: 12px;
+            background: none;
+            border: none;
+            color: white;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu button:active {
+            background-color: #333333;
+            color: #f59e0b;
         }
 
         .container {
             max-width: 800px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
 
-        .card {
-            background-color: #1e293b;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid #334155;
+        .baslik-alan {
+            text-align: center;
+            margin: 20px 0;
         }
 
-        .card h2 {
+        .baslik-alan h1 {
             color: #f59e0b;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 28px;
+            text-transform: uppercase;
         }
 
-        ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #334155;
-            list-style: none;
+        /* E-Ticaret Ürün ve Hizmet Kartları */
+        .urun-listesi {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        ul li::before {
-            content: "⚡ ";
-            color: #f59e0b;
+        .urun-kart {
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        /* Form Alanları */
-        .form-group {
-            margin-bottom: 15px;
+        @media(min-width: 600px) {
+            .urun-kart {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
 
-        .form-group label {
-            display: block;
+        .urun-detay h3 {
+            color: #ffffff;
+            font-size: 18px;
             margin-bottom: 5px;
-            color: #94a3b8;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
+        .urun-detay p {
+            color: #aaaaaa;
+            font-size: 14px;
         }
 
-        .form-control:focus {
-            border-color: #3b82f6;
-            outline: none;
+        .buton-grubu {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .btn {
-            width: 100%;
-            padding: 15px;
+        .btn-sepet {
             border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
+            padding: 10px 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: transform 0.1s;
+        }
+
+        .btn-sepet:active { transform: scale(0.95); }
+
+        .btn-acil {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .btn-randevu {
+            background-color: #f59e0b;
+            color: #111111;
+        }
+
+        /* Açılır Sipariş Formu Penceresi (Modal) */
+        .pencere-arka {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pencere-icerik {
+            background-color: #222222;
+            padding: 25px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 420px;
+            border: 1px solid #444444;
+        }
+
+        .pencere-icerik h2 {
+            color: #f59e0b;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .form-grup {
+            margin-bottom: 12px;
+        }
+
+        .form-grup label {
+            display: block;
+            color: #cccccc;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-grup input, .form-grup textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #111111;
+            border: 1px solid #333333;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .pencere-butonlar {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-onay {
+            flex: 1;
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
         }
 
-        .btn:active { transform: scale(0.98); }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        .btn-iptal {
+            background-color: #ef4444;
             color: white;
-            margin-top: 10px;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
-        .btn-call {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-        }
-
-        /* Panel Alanı */
-        .admin-section {
+        /* Kurumsal Giriş Yönetim Paneli */
+        .yonetim-paneli {
             display: none;
-            margin-top: 20px;
-            background-color: #020617;
+            background-color: #111111;
             border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
         }
 
-        .appointment-item {
-            background-color: #1e293b;
+        .siparis-kutu {
+            background-color: #222222;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 10px;
-            border-left: 4px solid #f59e0b;
+            border-left: 5px solid #22c55e;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .btn-delete {
+        .btn-sil {
             background-color: #ef4444;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
         }
 
+        /* Tıklanabilir Sosyal Medya & İmzalar */
         footer {
-            background-color: #020617;
+            background-color: #111111;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #1e293b;
+            padding: 25px;
+            margin-top: 50px;
+            border-top: 1px solid #222222;
         }
 
-        footer .credits {
-            font-size: 1rem;
-            color: #94a3b8;
-            margin-bottom: 15px;
-        }
-
-        footer .credits strong { color: #3b82f6; }
-
-        .social-links {
+        .sosyal-baglar {
             display: flex;
             justify-content: center;
             gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .social-links a {
+        .sosyal-baglar a {
             color: #f59e0b;
             text-decoration: none;
-            font-size: 0.95rem;
             font-weight: 600;
-            background-color: #0f172a;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid #334155;
+            font-size: 14px;
+            background-color: #1a1a1a;
+            padding: 6px 12px;
+            border-radius: 15px;
+            border: 1px solid #333333;
         }
 
-        .btn-admin-toggle {
-            background: none;
-            border: none;
-            color: #334155;
-            cursor: pointer;
-            font-size: 0.8rem;
+        footer .imza {
+            font-size: 14px;
+            color: #888888;
+        }
+
+        footer .imza strong {
+            color: #3b82f6;
+        }
+
+        /* Doğrudan Arama Butonu */
+        .btn-acil-ara {
+            display: block;
+            text-align: center;
+            background-color: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 16px;
+            border: 1px solid #3b82f6;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Yiğit Elektrik</h1>
-        <p>Cizre ve Çevresinde 7/24 Güvenilir Elektrik Hizmeti & Hızlı Randevu</p>
-    </header>
+    <!-- Üst Menü -->
+    <div class="navbar">
+        <div class="logo">Yiğit Elektrik</div>
+        <div class="menu-3nokta" onclick="menuyuAcKapa()">⋮</div>
+        <div class="dropdown-menu" id="acilirMenü">
+            <button onclick="kurumsalGirisYap()">🔑 Kurumsal Giriş</button>
+        </div>
+    </div>
 
     <div class="container">
-        
-        <!-- Hizmetler -->
-        <div class="card">
-            <h2>Hizmetlerimiz & Çözümlerimiz</h2>
-            <ul>
-                <li>Ev ve İş Yeri Elektrik Tesisatı Kurulumu</li>
-                <li>7/24 Elektrik Arıza ve Bakım Servisi</li>
-                <li>İnternet Hat Çekimi ve Arıza Çözümleri</li>
-                <li>Avize Montajı ve Led Aydınlatma Sistemleri</li>
-                <li>Pano Kurulumu ve Şalter Değişimi</li>
-                <li style="color: #22c55e; font-weight: bold;">📅 Planlı İşleriniz İçin Gün İçi Hızlı Randevu</li>
-            </ul>
+
+        <div class="baslik-alan">
+            <h1>E-Ticaret / Acil Servis & Randevu</h1>
+            <p style="color: #888;">İster acil usta çağırın, ister dilediğiniz güne randevu oluşturun.</p>
         </div>
 
-        <!-- Randevu Alma Formu -->
-        <div class="card">
-            <h2>Online Randevu & Sipariş Oluştur</h2>
-            <p style="color: #94a3b8; margin-bottom: 15px;">Aşağıdaki formu doldurarak hızlıca servis talebi oluşturabilirsiniz.</p>
-            <form id="appointmentForm">
-                <div class="form-group">
-                    <label>Adınız Soyadınız</label>
-                    <input type="text" id="custName" class="form-control" required placeholder="Örn: Ahmet Yılmaz">
-                </div>
-                <div class="form-group">
-                    <label>Telefon Numaranız</label>
-                    <input type="tel" id="custPhone" class="form-control" required placeholder="Örn: 05xx xxx xx xx">
-                </div>
-                <div class="form-group">
-                    <label>Yapılacak İş / Arıza Nedir?</label>
-                    <select id="custService" class="form-control">
-                        <option value="Elektrik Arızası">Elektrik Arızası / Şalter Atması</option>
-                        <option value="Tesisat Çekimi">Sıfırdan Tesisat Kurulumu</option>
-                        <option value="İnternet Arızası">İnternet / Kablo Çekimi</option>
-                        <option value="Montaj İşleri">Avize / Led / Priz Montajı</option>
-                        <option value="Diğer">Diğer İletişim / Sipariş</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-submit">Randevu Talebi Gönder 📅</button>
-            </form>
-        </div>
+        <!-- 7/24 Telefon Butonu -->
+        <a href="tel:05011897556" class="btn-acil-ara">📞 Doğrudan Ustayı Ara: 0501 189 75 56</a>
 
-        <!-- Doğrudan Arama -->
-        <div class="card" style="text-align: center;">
-            <h2>7/24 Acil Arıza Hattı</h2>
-            <p style="color: #94a3b8; margin-bottom: 15px;">Beklemek istemiyorsanız doğrudan ustayı arayarak randevu alabilirsiniz:</p>
-            <p style="font-size: 1.6rem; font-weight: bold; color: #f59e0b; margin-bottom: 15px;">📞 0501 189 75 56</p>
-            <a href="tel:05011897556" class="btn btn-call">Ustayı Hemen Ara</a>
-        </div>
-
-        <!-- KURUMSAL GİRİŞ PANELİ (ŞİFRELİ) -->
-        <div id="adminPanel" class="card admin-section">
-            <h2 style="color: #ef4444;">🔑 Yönetim Paneli (Gelen Randevular)</h2>
-            <div id="appointmentList" style="margin-top: 15px;">
-                <!-- Gelen Siparişler Buraya Akacak -->
+        <!-- Ürün/Hizmet Listesi -->
+        <div class="urun-listesi">
+            
+            <div class="urun-kart">
+                <div class="urun-detay">
+                    <h3>Ev / İş Yeri Elektrik Arızası</h3>
+                    <p>Şalter atması, sigorta arızaları ve genel tesisat kontrolü.</p>
+                </div>
+                <div class="buton-grubu">
+                    <button class="btn-sepet btn-acil" onclick="formuAc('Elektrik Arızası', 'Acil')">🚨 Acil Servis Çağır</button>
+                    <button class="btn-sepet btn-randevu" onclick="formuAc('Elektrik Arızası', 'Randevu')">📅 Randevu Al</button>
+                </div>
             </div>
+
+            <div class="urun-kart">
+                <div class="urun-detay">
+                    <h3>İnternet Kablo Çekimi & Arıza</h3>
+                    <p>Sıfırdan internet hattı çekimi, modem kurulumu ve kopma sorunları çözümü.</p>
+                </div>
+                <div class="buton-grubu">
+                    <button class="btn-sepet btn-acil" onclick="formuAc('İnternet Arızası', 'Acil')">🚨 Acil Servis Çağır</button>
+                    <button class="btn-sepet btn-randevu" onclick="formuAc('İnternet Arızası', 'Randevu')">📅 Randevu Al</button>
+                </div>
+            </div>
+
+            <div class="urun-kart">
+                <div class="urun-detay">
+                    <h3>Avize / Led Aydınlatma Montajı</h3>
+                    <p>Her türlü avize montajı, spot lamba ve şerit led kurulumları.</p>
+                </div>
+                <div class="buton-grubu">
+                    <button class="btn-sepet btn-acil" onclick="formuAc('Avize / Led Montajı', 'Acil')">🚨 Acil Servis Çağır</button>
+                    <button class="btn-sepet btn-randevu" onclick="formuAc('Avize / Led Montajı', 'Randevu')">📅 Randevu Al</button>
+                </div>
+            </div>
+
+            <div class="urun-kart">
+                <div class="urun-detay">
+                    <h3>Sıfırdan Komple Tesisat Kurulumu</h3>
+                    <p>İnşaat veya tadilattaki dairelerin komple elektrik altyapısı.</p>
+                </div>
+                <div class="buton-grubu">
+                    <button class="btn-sepet btn-acil" onclick="formuAc('Komple Tesisat', 'Acil')">🚨 Acil Servis Çağır</button>
+                    <button class="btn-sepet btn-randevu" onclick="formuAc('Komple Tesisat', 'Randevu')">📅 Randevu Al</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- KURUMSAL GİRİŞ PANELİ -->
+        <div class="yonetim-paneli" id="yoneticiAlani">
+            <h2 style="color: #ef4444; margin-bottom: 15px;">📦 Gelen Siparişler & Randevular</h2>
+            <div id="siparisListesi"></div>
         </div>
 
     </div>
 
+    <!-- Dinamik Sipariş ve Randevu Form Penceresi -->
+    <div class="pencere-arka" id="siparisPencerasi">
+        <div class="pencere-icerik">
+            <h2 id="secilenUrunAd">Sipariş Formu</h2>
+            <form id="musteriFormu">
+                <div class="form-grup">
+                    <label>Adınız Soyadınız</label>
+                    <input type="text" id="mAd" required placeholder="Örn: Ahmet Yılmaz">
+                </div>
+                <div class="form-grup">
+                    <label>Telefon Numaranız</label>
+                    <input type="tel" id="mTelefon" required placeholder="Örn: 05xx xxx xx xx">
+                </div>
+                
+                <!-- Sadece Randevu Seçildiğinde Açılan Tarih Alanı -->
+                <div class="form-grup" id="tarihAlani" style="display: none;">
+                    <label>Randevu İstediğiniz Gün ve Saat</label>
+                    <input type="datetime-local" id="mTarih">
+                </div>
+
+                <div class="form-grup">
+                    <label>Adresiniz veya Notunuz</label>
+                    <textarea id="mNot" rows="3" required placeholder="Açık adresinizi ve usta için notunuzu yazınız..."></textarea>
+                </div>
+                <div class="pencere-butonlar">
+                    <button type="button" class="btn-iptal" onclick="formuKapat()">İptal</button>
+                    <button type="submit" class="btn-onay">Siparişi Onayla ✅</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sosyal Medya ve SagatBaron İmzası -->
     <footer>
-        <div class="social-links">
+        <div class="sosyal-baglar">
             <a href="https://instagram.com/sagat_edits_official" target="_blank">🎬 Instagram</a>
             <a href="https://tiktok.com/@sagatedits_official" target="_blank">🎵 TikTok</a>
             <a href="https://mobile.capcutshare.com/sv2/ZSHqNjqw8/" target="_blank">✂️ CapCut</a>
         </div>
-        <div class="credits">
+        <div class="imza">
             Developed by <strong>SagatBaron</strong>
         </div>
-        <!-- Yönetici Girişini Tetikleyen Gizli Buton -->
-        <button class="btn-admin-toggle" onclick="openAdminPanel()">Kurumsal Giriş</button>
     </footer>
 
     <script>
-        // Form Gönderme İşlemi
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const service = document.getElementById('custService').value;
-            
-            const appointment = {
-                id: Date.now(),
-                name: name,
-                phone: phone,
-                service: service,
-                date: new Date().toLocaleString('tr-TR')
-            };
-            
-            let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
-            appointments.push(appointment);
-            localStorage.setItem('appointments', JSON.stringify(appointments));
-            
-            alert('Harika! Randevu talebiniz başarıyla alındı. Ustamız sizi en kısa sürede arayacaktır.');
-            document.getElementById('appointmentForm').reset();
-        });
+        let güncelHizmet = "";
+        let güncelTür = ""; // "Acil" veya "Randevu"
 
-        // Şifreli Kurumsal Giriş Fonksiyonu
-        function openAdminPanel() {
-            const password = prompt('Lütfen Kurumsal Giriş Şifresini Giriniz:');
-            if (password === 'Bereket2888') {
-                document.getElementById('adminPanel').style.display = 'block';
-                renderAppointments();
-                window.scrollTo(0, document.body.scrollHeight);
-            } else {
-                alert('Hatalı Şifre Girdiniz! Giriş Engellendi.');
+        function menuyuAcKapa() {
+            const menu = document.getElementById('acilirMenü');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-3nokta')) {
+                document.getElementById('acilirMenü').style.display = 'none';
             }
         }
 
-        // Randevuları Ekrana Basma
-        function renderAppointments() {
-            const listDiv = document.getElementById('appointmentList');
-            listDiv.innerHTML = '';
-            let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+        // Formu Türüne Göre Dinamik Açma
+        function formuAc(hizmetAdi, tur) {
+            güncelHizmet = hizmetAdi;
+            güncelTür = tur;
             
-            if (appointments.length === 0) {
-                listDiv.innerHTML = '<p style="color: #94a3b8;">Henüz gelen bir randevu veya sipariş bulunmuyor.</p>';
+            const baslik = document.getElementById('secilenUrunAd');
+            const tarihDiv = document.getElementById('tarihAlani');
+            const tarihInput = document.getElementById('mTarih');
+
+            if (tur === 'Acil') {
+                baslik.innerText = "🚨 " + hizmetAdi + " (Acil Servis Çağır)";
+                tarihDiv.style.display = "none";
+                tarihInput.required = false;
+            } else {
+                baslik.innerText = "📅 " + hizmetAdi + " (Planlı Randevu Al)";
+                tarihDiv.style.display = "block";
+                tarihInput.required = true;
+            }
+            
+            document.getElementById('siparisPencerasi').style.display = 'flex';
+        }
+
+        function formuKapat() {
+            document.getElementById('siparisPencerasi').style.display = 'none';
+            document.getElementById('musteriFormu').reset();
+        }
+
+        // Veriyi Tarayıcı Hafızasına Yazma
+        document.getElementById('musteriFormu').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const ad = document.getElementById('mAd').value;
+            const tel = document.getElementById('mTelefon').value;
+            const not = document.getElementById('mNot').value;
+            const secilenZaman = document.getElementById('mTarih').value;
+            
+            let zamanBilgisi = "Hemen (Acil Servis)";
+            if (güncelTür === 'Randevu' && secilenZaman) {
+                zamanBilgisi = new Date(secilenZaman).toLocaleString('tr-TR');
+            }
+
+            const siparisNesnesi = {
+                id: Date.now(),
+                hizmet: güncelHizmet,
+                tur: güncelTür,
+                isim: ad,
+                telefon: tel,
+                not: not,
+                zaman: zamanBilgisi,
+                kayitTarihi: new Date().toLocaleString('tr-TR')
+            };
+            
+            let liste = JSON.parse(localStorage.getItem('yigit_elektrik_verileri')) || [];
+            liste.push(siparisNesnesi);
+            localStorage.setItem('yigit_elektrik_verileri', JSON.stringify(liste));
+            
+            alert('Talebiniz başarıyla alındı! Ustamız en kısa sürede harekete geçecektir.');
+            formuKapat();
+        });
+
+        // Şifreli Kurumsal Giriş
+        function kurumsalGirisYap() {
+            const kontrolSifre = prompt('Kurumsal Giriş Şifresini Giriniz:');
+            if (kontrolSifre === 'Bereket2888') {
+                document.getElementById('yoneticiAlani').style.display = 'block';
+                siparisleriYukle();
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                alert('Hatalı Şifre Girdiniz!');
+            }
+        }
+
+        // Panelde Siparişleri Listeleme (Acil ve Randevu Farkıyla)
+        function siparisleriYukle() {
+            const anaDiv = document.getElementById('siparisListesi');
+            anaDiv.innerHTML = '';
+            let liste = JSON.parse(localStorage.getItem('yigit_elektrik_verileri')) || [];
+            
+            if (liste.length === 0) {
+                anaDiv.innerHTML = '<p style="color: #888;">Henüz sipariş veya randevu kaydı yok.</p>';
                 return;
             }
             
-            appointments.forEach(app => {
-                const item = document.createElement('div');
-                item.className = 'appointment-item';
-                item.innerHTML = `
+            liste.forEach(s => {
+                const kutu = document.createElement('div');
+                kutu.className = 'siparis-kutu';
+                
+                // Acil işleri kırmızı, planlı işleri sarı şeritle göster
+                if (s.tur === 'Acil') {
+                    kutu.style.borderLeft = "5px solid #ef4444";
+                } else {
+                    kutu.style.borderLeft = "5px solid #f59e0b";
+                }
+
+                kutu.innerHTML = `
                     <div>
-                        <strong style="color: #f8fafc;">${app.name}</strong> (${app.phone})<br>
-                        <span style="color: #94a3b8; font-size: 0.9rem;">Hizmet: ${app.service} | Tarih: ${app.date}</span>
+                        <span style="font-weight: bold; color: ${s.tur === 'Acil' ? '#ef4444' : '#f59e0b'}; font-size: 13px;">
+                            ${s.tur === 'Acil' ? '🚨 ACİL SERVİS ÇAĞRISI' : '📅 PLANLI RANDEVU'}
+                        </span><br>
+                        <strong style="font-size: 16px; color: white;">İş: ${s.hizmet}</strong><br>
+                        <strong>Müşteri:</strong> ${s.isim} (${s.telefon})<br>
+                        <strong>İstelenen Zaman:</strong> <span style="color: #22c55e; font-weight: bold;">${s.zaman}</span><br>
+                        <strong>Adres / Not:</strong> <span style="color: #ccc;">${s.not}</span><br>
+                        <span style="color: #555; font-size: 11px;">Müşteri Formu Doldurma Saati: ${s.kayitTarihi}</span>
                     </div>
-                    <button class="btn-delete" onclick="deleteAppointment(${app.id})">Sil</button>
+                    <button class="btn-sil" onclick="veriSil(${s.id})">Sil</button>
                 `;
-                listDiv.appendChild(item);
+                anaDiv.appendChild(kutu);
             });
         }
 
-        // Randevu Silme
-        function deleteAppointment(id) {
-            let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
-            appointments = appointments.filter(app => app.id !== id);
-            localStorage.setItem('appointments', JSON.stringify(appointments));
-            renderAppointments();
+        function veriSil(id) {
+            let liste = JSON.parse(localStorage.getItem('yigit_elektrik_verileri')) || [];
+            liste = liste.filter(s => s.id !== id);
+            localStorage.setItem('yigit_elektrik_verileri', JSON.stringify(liste));
+            siparisleriYukle();
         }
     </script>
 </body>
