@@ -5,592 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yiğit Elektrik | Güvenilir ve Kaliteli Hizmet</title>
     <style>
-        /* Orijinal Sade ve Karanlık Tema */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        /* Üst Bar ve Akıllı 3 Nokta Sistemi */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #111111;
-            border-bottom: 2px solid #f59e0b;
-            position: relative;
-        }
-
-        .navbar .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .menu-3nokta {
-            cursor: pointer;
-            font-size: 26px;
-            color: #f59e0b;
-            padding: 5px 10px;
-            user-select: none;
-        }
-
-        /* Açılır Seçenek Menüsü */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background-color: #222222;
-            border: 1px solid #444444;
-            border-radius: 12px;
-            width: 240px;
-            z-index: 100;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-            overflow: hidden;
-        }
-
-        .dropdown-menu button, .dropdown-menu a {
-            display: block;
-            width: 100%;
-            padding: 14px 16px;
-            background: none;
-            border: none;
-            color: white;
-            text-align: left;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            border-bottom: 1px solid #333333;
-        }
-
-        .dropdown-menu button:active, .dropdown-menu a:active { background-color: #333333; }
-        .dropdown-menu .menu-acil { color: #ef4444; }
-        .dropdown-menu .menu-siparis { color: #f59e0b; }
-        .dropdown-menu .menu-randevu { color: #3b82f6; }
-        .dropdown-menu .menu-whatsapp { color: #22c55e; }
-        .dropdown-menu .menu-kurumsal { color: #aaaaaa; border-bottom: none; }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-
-        /* Giriş ve Kaliteli Hizmet Kartları */
-        .baslik-alan {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .baslik-alan h1 {
-            color: #f59e0b;
-            font-size: 32px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .hizmet-ozellikleri {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .ozellik-kart {
-            background-color: #222222;
-            border: 1px solid #333333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border-top: 3px solid #f59e0b;
-        }
-
-        .ozellik-kart h3 {
-            color: #f59e0b;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .ozellik-kart p {
-            color: #cccccc;
-            font-size: 14px;
-        }
-
-        /* Kurumsal Künye ve İletişim Alanı */
-        .iletisim-kunye {
-            background-color: #111111;
-            border: 1px solid #333333;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-        }
-
-        .iletisim-kunye h3 {
-            color: #f59e0b;
-            margin-bottom: 15px;
-            font-size: 18px;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 5px;
-        }
-
-        .kunye-satir {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-
-        .kunye-satir strong { color: #f59e0b; }
-
-        /* Modallar / Açılır Pencereler */
-        .pencere-arka {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            z-index: 200;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pencere-icerik {
-            background-color: #222222;
-            padding: 25px;
-            border-radius: 16px;
-            width: 95%;
-            max-width: 500px;
-            border: 1px solid #444444;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-
-        .pencere-icerik h2 { color: #f59e0b; margin-bottom: 15px; font-size: 20px; }
-
-        .urun-izgara {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .urun-kart {
-            background-color: #1a1a1a;
-            border: 1px solid #333333;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px;
-        }
-
-        .urun-gorsel {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 6px;
-            background-color: #111111;
-        }
-
-        .urun-ad { font-size: 16px; font-weight: bold; margin: 8px 0 4px 0; color: white; }
-        .urun-fiyat { color: #22c55e; font-weight: bold; margin-bottom: 8px; }
-
+        /* Tasarım Stilleri (Daha önce yaptığımız şık ve kurumsal yapı) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #1a1a1a; color: #ffffff; line-height: 1.6; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background-color: #111111; border-bottom: 2px solid #f59e0b; position: relative; }
+        .logo { font-size: 22px; font-weight: bold; color: #ffffff; }
+        .menu-3nokta { cursor: pointer; font-size: 26px; color: #f59e0b; padding: 5px 10px; }
+        .dropdown-menu { display: none; position: absolute; top: 60px; right: 20px; background-color: #222222; border: 1px solid #444444; border-radius: 12px; width: 240px; z-index: 100; box-shadow: 0 8px 25px rgba(0,0,0,0.7); overflow: hidden; }
+        .dropdown-menu button, .dropdown-menu a { display: block; width: 100%; padding: 14px 16px; background: none; border: none; color: white; text-align: left; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; border-bottom: 1px solid #333333; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .baslik-alan { text-align: center; margin: 30px 0; }
+        .hizmet-ozellikleri { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .ozellik-kart { background-color: #222222; border: 1px solid #333333; padding: 20px; border-radius: 12px; text-align: center; border-top: 3px solid #f59e0b; }
+        .iletisim-kunye { background-color: #111111; border: 1px solid #333333; padding: 20px; border-radius: 12px; margin-top: 30px; }
+        .pencere-arka { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 200; justify-content: center; align-items: center; }
+        .pencere-icerik { background-color: #222222; padding: 25px; border-radius: 16px; width: 95%; max-width: 500px; border: 1px solid #444444; }
         .form-grup { margin-bottom: 12px; }
-        .form-grup label { display: block; color: #cccccc; margin-bottom: 5px; font-size: 14px; }
-        .form-grup input, .form-grup textarea, .form-grup select { width: 100%; padding: 10px; background-color: #111111; border: 1px solid #333333; border-radius: 6px; color: white; }
-
-        .btn-onay { width: 100%; background-color: #22c55e; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .btn-iptal { background-color: #ef4444; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; }
-        .btn-sil { background-color: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-
-        /* Yönetim Paneli */
-        .yonetim-paneli {
-            display: none;
-            background-color: #111111;
-            border: 2px solid #f59e0b;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .panel-bolum { background-color: #222222; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333333; }
-        .panel-bolum h3 { color: #f59e0b; margin-bottom: 10px; border-bottom: 1px solid #333333; padding-bottom: 5px; }
-        .kayit-kutu { background-color: #1a1a1a; padding: 12px; border-radius: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .panel-urun-satir { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333333; }
-
-        footer { background-color: #111111; text-align: center; padding: 25px; margin-top: 60px; border-top: 1px solid #222222; }
-        .sosyal-baglar { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
-        .sosyal-baglar a { color: #f59e0b; text-decoration: none; font-weight: 600; font-size: 14px; background-color: #1a1a1a; padding: 6px 12px; border-radius: 15px; border: 1px solid #333333; }
-        footer .imza { font-size: 14px; color: #888888; }
-        footer .imza strong { color: #3b82f6; }
+        .form-grup input, .form-grup textarea { width: 100%; padding: 10px; background-color: #111111; border: 1px solid #333333; border-radius: 6px; color: white; }
+        .btn-onay { width: 100%; background-color: #22c55e; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .yonetim-paneli { display: none; background-color: #111111; border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-top: 30px; }
+        footer { background-color: #111111; text-align: center; padding: 25px; margin-top: 60px; }
     </style>
 </head>
 <body>
 
-    <!-- Üst Menü Çubuğu -->
     <div class="navbar">
         <div class="logo">Yiğit Elektrik</div>
         <div class="menu-3nokta" onclick="menuyuAcKapa(event)">⋮</div>
-        
         <div class="dropdown-menu" id="acilirMenü">
-            <a href="tel:05011897556" id="menuAcilLink" class="menu-acil">🚨 Acil Servis (Hemen Ara)</a>
-            <button onclick="pencereAc('SiparisArayuzu')" class="menu-siparis">🛒 Ürün Sipariş Mağazası</button>
-            <button onclick="pencereAc('RandevuArayuzu')" class="menu-randevu">📅 Planlı Randevu Al</button>
-            <a href="https://wa.me/905011897556" id="menuWhatsAppLink" target="_blank" class="menu-whatsapp">💬 WhatsApp Canlı Destek</a>
-            <button onclick="kurumsalGirisYap()" class="menu-kurumsal">🔑 Kurumsal Giriş</button>
+            <a href="tel:05011897556" id="menuAcilLink">🚨 Acil Servis</a>
+            <button onclick="pencereAc('SiparisArayuzu')">🛒 Sipariş Ver</button>
+            <button onclick="pencereAc('RandevuArayuzu')">📅 Randevu Al</button>
+            <button onclick="kurumsalGirisYap()">🔑 Kurumsal Giriş</button>
         </div>
     </div>
 
     <div class="container">
-        
-        <!-- Karşılama Alanı -->
         <div class="baslik-alan">
             <h1>Yiğit Elektrik Mühendislik</h1>
-            <p style="color: #aaaaaa; font-size: 16px;">Cizre genelinde profesyonel elektrik teknik servis ve malzeme tedarik noktası.</p>
-            <p style="color: #f59e0b; font-size: 14px; margin-top: 10px; font-weight: bold;">Hizmet butonları için sağ üstteki üç noktaya (⋮) tıklayınız.</p>
+            <p>Cizre'nin en güvenilir teknik servis noktası.</p>
         </div>
-
-        <!-- Kaliteli Hizmet Kartları (Sitenin Dolu Görünmesini Sağlar) -->
+        
         <div class="hizmet-ozellikleri">
-            <div class="ozellik-kart">
-                <h3>⚡ 7/24 Hızlı Teknik Servis</h3>
-                <p>Cizre ve çevresinde meydana gelen ani elektrik, şalter arızaları ve internet kopmalarına anında müdahale.</p>
-            </div>
-            <div class="ozellik-kart">
-                <h3>💎 Kaliteli İşçilik & Malzeme</h3>
-                <p>Ev ve iş yerlerinizdeki tüm montaj, tadilat ve sıfır tesisat işlemlerinde en üst kalitede mühendislik standartları.</p>
-            </div>
-            <div class="ozellik-kart">
-                <h3>📅 Planlı Randevu Sistemi</h3>
-                <p>Vaktiniz kısıtlıysa dilediğiniz gün ve saati seçerek randevu oluşturun, ekibimiz tam vaktinde kapınızda olsun.</p>
-            </div>
+            <div class="ozellik-kart"><h3>⚡ 7/24 Hızlı Servis</h3><p>Anında müdahale.</p></div>
+            <div class="ozellik-kart"><h3>💎 Kaliteli Malzeme</h3><p>Uzun ömürlü çözümler.</p></div>
         </div>
 
-        <!-- Adres ve Telefon Bilgileri -->
         <div class="iletisim-kunye">
-            <h3>📍 Kurumsal İletişim & Adres Bilgileri</h3>
-            <div class="kunye-satir"><strong>📞 Doğrudan İletişim Hatı:</strong> 0501 189 75 56</div>
-            <div class="kunye-satir"><strong>🏢 Merkez Ofis / Depo:</strong> Cizre, Şırnak</div>
-            <div class="kunye-satir"><strong>🛠️ Hizmet Alanları:</strong> Ev/İş Yeri Arızaları, İnternet Hat Çekimi, Avize/Led Montajı, Komple Altyapı Tesisatı.</div>
+            <h3>📍 İletişim</h3>
+            <p>Tel: 0501 189 75 56</p>
         </div>
 
-        <!-- ================= KURUMSAL GİRİŞ PANELİ ================= -->
         <div class="yonetim-paneli" id="yoneticiAlani">
-            <h2 style="color: #ef4444; margin-bottom: 20px; text-align: center;">🛠️ Gelişmiş Yönetim Paneli</h2>
-            
-            <div class="panel-bolum">
-                <h3>📢 Bildirim & Usta Telefon Ayarları</h3>
-                <div class="form-grup">
-                    <label>Bildirim Durumu</label>
-                    <select id="cfgBildirim" onchange="ayarKaydet()">
-                        <option value="acik">Açık (Sipariş Durumunda Mesaj Gönder)</option>
-                        <option value="kapali">Kapalı (Yalnızca Panele Kaydet)</option>
-                    </select>
-                </div>
-                <div class="form-grup">
-                    <label>Bildirim Telefon Numarası</label>
-                    <input type="tel" id="cfgTelefon" value="05011897556" onchange="ayarKaydet()">
-                </div>
-            </div>
-
-            <div class="panel-bolum">
-                <h3>📦 Gelen Siparişler ve Randevu Talepleri</h3>
-                <div id="panelKayitListesi"></div>
-            </div>
-
-            <div class="panel-bolum">
-                <h3>➕ Mağazaya Yeni Ürün Ekle (Galeriden)</h3>
-                <div class="form-grup"><label>Ürün Adı</label><input type="text" id="pUrunAdi"></div>
-                <div class="form-grup"><label>Ürünün Fiyatı (TL)</label><input type="text" id="pUrunFiyat"></div>
-                <div class="form-grup"><label>Ürün Fotoğrafı Seç</label><input type="file" id="pUrunGorsel" accept="image/*"></div>
-                <button class="btn-onay" onclick="urunEkle()">Ürünü Mağazaya Yükle 🚀</button>
-            </div>
-
-            <div class="panel-bolum">
-                <h3>Depodaki Ürünleri Yönet</h3>
-                <div id="panelUrunListesi"></div>
-            </div>
+            <h2 style="color: #ef4444;">🛠️ Yönetim Paneli</h2>
+            <div id="panelKayitListesi"></div>
         </div>
     </div>
 
-    <!-- PENCERE 1: ÜRÜN SİPARİŞ MAĞAZASI ARAYÜZÜ -->
+    <!-- Pencereler (Sipariş/Randevu) -->
     <div class="pencere-arka" id="SiparisArayuzu">
-        <div class="pencere-icerik" style="max-width: 600px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h2 style="margin-bottom:0;">🛒 E-Ticaret Mağazası</h2>
-                <button class="btn-iptal" onclick="pencereKapat('SiparisArayuzu')">Kapat</button>
-            </div>
-            <div class="urun-izgara" id="vitrinAlani"></div>
-        </div>
-    </div>
-
-    <!-- PENCERE 2: SEÇİLEN ÜRÜN İÇİN SATIN ALMA FORMU -->
-    <div class="pencere-arka" id="SatinAlFormPenceresi">
         <div class="pencere-icerik">
-            <h2 id="secilenUrunAd">Sipariş Bilgileri</h2>
-            <form id="urunSiparisFormu">
-                <input type="hidden" id="fSiparisUrun">
-                <div class="form-grup"><label>Adınız Soyadınız</label><input type="text" id="sAd" required></div>
-                <div class="form-grup"><label>Telefon Numaranız</label><input type="tel" id="sTel" required placeholder="05xxxxxxxx"></div>
-                <div class="form-grup"><label>Adresiniz ve Sipariş Notu</label><textarea id="sAdres" rows="3" required></textarea></div>
-                <div class="pencere-butonlar">
-                    <button type="button" class="btn-iptal" onclick="pencereKapat('SatinAlFormPenceresi')">İptal</button>
-                    <button type="submit" class="btn-onay">Siparişi Onayla ✅</button>
-                </div>
+            <h2>Sipariş Bilgileri</h2>
+            <form id="siparisFormu">
+                <div class="form-grup"><label>İsim</label><input type="text" id="sAd" required></div>
+                <div class="form-grup"><label>Not</label><textarea id="sAdres" required></textarea></div>
+                <button type="submit" class="btn-onay">Gönder</button>
             </form>
         </div>
     </div>
 
-    <!-- PENCERE 3: PLANLI RANDEVU ALMA ARAYÜZÜ -->
     <div class="pencere-arka" id="RandevuArayuzu">
         <div class="pencere-icerik">
-            <h2>📅 Planlı Randevu Oluştur</h2>
+            <h2>Randevu Oluştur</h2>
             <form id="randevuFormu">
-                <div class="form-grup"><label>Adınız Soyadınız</label><input type="text" id="rAd" required></div>
-                <div class="form-grup"><label>Telefon Numaranız</label><input type="tel" id="rTel" required placeholder="05xxxxxxxx"></div>
-                <div class="form-grup"><label>İstediğiniz Gün ve Saat</label><input type="datetime-local" id="rZaman" required></div>
-                <div class="form-grup"><label>Yapılacak İş / Arıza Detayı & Adres</label><textarea id="rNot" rows="3" required></textarea></div>
-                <div class="pencere-butonlar">
-                    <button type="button" class="btn-iptal" onclick="pencereKapat('RandevuArayuzu')">İptal</button>
-                    <button type="submit" class="btn-onay">Randevuyu Tamamla 📅</button>
-                </div>
+                <div class="form-grup"><label>İsim</label><input type="text" id="rAd" required></div>
+                <button type="submit" class="btn-onay">Randevu Al</button>
             </form>
         </div>
     </div>
 
-    <!-- Alt Bilgi ve Sosyal Medya -->
-    <footer>
-        <div class="sosyal-baglar">
-            <a href="https://instagram.com/sagat_edits_official" target="_blank">🎬 Instagram</a>
-            <a href="https://tiktok.com/@sagatedits_official" target="_blank">🎵 TikTok</a>
-            <a href="https://mobile.capcutshare.com/sv2/ZSHqNjqw8/" target="_blank">✂️ CapCut</a>
-        </div>
-        <div class="imza">Developed by <strong>SagatBaron</strong></div>
-    </footer>
-
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if(!localStorage.getItem('cfg_tel')) localStorage.setItem('cfg_tel', '05011897556');
-            if(!localStorage.getItem('cfg_bildirim')) localStorage.setItem('cfg_bildirim', 'acik');
-            
-            telefonVeLinkleriGuncelle(localStorage.getItem('cfg_tel'));
-            document.getElementById('cfgBildirim').value = localStorage.getItem('cfg_bildirim');
-            vitrinGuncelle();
-        });
+        // --- GÜVENLİK VE MESAJ SİSTEMİ ---
+        const USTA_TEL = "05011897556";
 
-        function menuyuAcKapa(e) {
-            e.stopPropagation();
-            const menu = document.getElementById('acilirMenü');
-            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-        }
-
+        function menuyuAcKapa(e) { e.stopPropagation(); document.getElementById('acilirMenü').style.display = (document.getElementById('acilirMenü').style.display === 'block') ? 'none' : 'block'; }
         window.onclick = function() { document.getElementById('acilirMenü').style.display = 'none'; }
-
-        function telefonVeLinkleriGuncelle(numara) {
-            document.getElementById('cfgTelefon').value = numara;
-            document.getElementById('menuAcilLink').href = "tel:" + numara;
-            document.getElementById('menuWhatsAppLink').href = "https://wa.me/90" + numara.replace(/^0/, "");
-        }
-
-        function ayarKaydet() {
-            const yeniTel = document.getElementById('cfgTelefon').value;
-            localStorage.setItem('cfg_tel', yeniTel);
-            localStorage.setItem('cfg_bildirim', document.getElementById('cfgBildirim').value);
-            telefonVeLinkleriGuncelle(yeniTel);
-        }
-
         function pencereAc(id) { document.getElementById(id).style.display = 'flex'; }
-        function pencereKapat(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Mağaza Sistemleri
-        function urunEkle() {
-            const ad = document.getElementById('pUrunAdi').value;
-            const fiyat = document.getElementById('pUrunFiyat').value;
-            const dosyaInput = document.getElementById('pUrunGorsel');
-
-            if(!ad || !fiyat) { alert('Lütfen alanları doldurun!'); return; }
-
-            const dosya = dosyaInput.files[0];
-            if(dosya) {
-                const reader = new FileReader();
-                reader.onload = function(e) { kaydetUrun(ad, fiyat, e.target.result); }
-                reader.readAsDataURL(dosya);
-            } else {
-                kaydetUrun(ad, fiyat, 'https://via.placeholder.com/220x140?text=Gorsel+Yok');
-            }
-        }
-
-        function kaydetUrun(ad, fiyat, gorsel) {
-            let urunler = JSON.parse(localStorage.getItem('products_data')) || [];
-            urunler.push({ id: Date.now(), ad: ad, fiyat: fiyat, gorsel: gorsel });
-            localStorage.setItem('products_data', JSON.stringify(urunler));
-            
-            alert('Ürün başarıyla eklendi!');
-            document.getElementById('pUrunAdi').value = '';
-            document.getElementById('pUrunFiyat').value = '';
-            document.getElementById('pUrunGorsel').value = '';
-            
-            vitrinGuncelle();
-            if(document.getElementById('yoneticiAlani').style.display === 'block') urunYonetimListele();
-        }
-
-        function vitrinGuncelle() {
-            const vitrin = document.getElementById('vitrinAlani');
-            vitrin.innerHTML = '';
-            let urunler = JSON.parse(localStorage.getItem('products_data')) || [];
-
-            if(urunler.length === 0) {
-                vitrin.innerHTML = '<p style="color:#888; text-align:center; width:100%;">Mağaza şu an boş.</p>';
-                return;
-            }
-
-            urunler.forEach(u => {
-                vitrin.innerHTML += `
-                    <div class="urun-kart">
-                        <img src="${u.gorsel}" class="urun-gorsel">
-                        <div class="urun-ad">${u.ad}</div>
-                        <div class="urun-fiyat">${u.fiyat} TL</div>
-                        <button class="btn-onay" style="margin-top:0; padding:8px;" onclick="satınAlFormuAc('${u.ad}')">Sipariş Et</button>
-                    </div>
-                `;
-            });
-        }
-
-        function urunYonetimListele() {
-            const liste = document.getElementById('panelUrunListesi');
-            liste.innerHTML = '';
-            let urunler = JSON.parse(localStorage.getItem('products_data')) || [];
-            urunler.forEach(u => {
-                liste.innerHTML += `
-                    <div class="panel-urun-satir">
-                        <span>${u.ad} (${u.fiyat} TL)</span>
-                        <button class="btn-sil" onclick="urunSil(${u.id})">Sil</button>
-                    </div>
-                `;
-            });
-        }
-
-        function urunSil(id) {
-            let urunler = JSON.parse(localStorage.getItem('products_data')) || [];
-            urunler = urunler.filter(u => u.id !== id);
-            localStorage.setItem('products_data', JSON.stringify(urunler));
-            vitrinGuncelle();
-            urunYonetimListele();
-        }
-
-        function satınAlFormuAc(urunAdi) {
-            document.getElementById('fSiparisUrun').value = urunAdi;
-            document.getElementById('secilenUrunAd').innerText = "🛒 " + urunAdi + " - Sipariş Formu";
-            pencereAc('SatinAlFormPenceresi');
-        }
-
-        // Sipariş Submit
-        document.getElementById('urunSiparisFormu').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const urun = document.getElementById('fSiparisUrun').value;
-            const ad = document.getElementById('sAd').value;
-            const tel = document.getElementById('sTel').value;
-            const adres = document.getElementById('sAdres').value;
-
-            const siparis = { id: Date.now(), tur: 'Sipariş', urun: urun, isim: ad, telefon: tel, detay: adres, zaman: 'Hemen', tarih: new Date().toLocaleString('tr-TR') };
-            kayitEkle(siparis);
-            pencereKapat('SatinAlFormPenceresi');
-            pencereKapat('SiparisArayuzu');
-        });
-
-        // Randevu Submit
-        document.getElementById('randevuFormu').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const ad = document.getElementById('rAd').value;
-            const tel = document.getElementById('rTel').value;
-            const zaman = document.getElementById('rZaman').value;
-            const not = document.getElementById('rNot').value;
-
-            const randevu = { id: Date.now(), tur: 'Randevu', urun: 'Planlı Hizmet', isim: ad, telefon: tel, detay: not, zaman: new Date(zaman).toLocaleString('tr-TR'), tarih: new Date().toLocaleString('tr-TR') };
-            kayitEkle(randevu);
-            pencereKapat('RandevuArayuzu');
-        });
-
-        // ARKA PLANDA OTOMATİK MESAJ GÖNDERME TETİKLEYİCİSİ
-        function kayitEkle(nesne) {
-            let veriler = JSON.parse(localStorage.getItem('store_records')) || [];
-            veriler.push(nesne);
-            localStorage.setItem('store_records', JSON.stringify(veriler));
-
-            const bildirimAyar = localStorage.getItem('cfg_bildirim');
-            const ustaTel = localStorage.getItem('cfg_tel');
-
-            if(bildirimAyar === 'acik') {
-                let txt = "";
-                if(nesne.tur === 'Randevu') {
-                    txt = `Yiğit Elektrik %2D Yeni Randevu var! 📅\nMüşteri: ${nesne.isim}\nTel: ${nesne.telefon}\nTarih: ${nesne.zaman}\nNot: ${nesne.detay}`;
-                } else {
-                    txt = `Yiğit Elektrik %2D Yeni Sipariş var! 🛒\nÜrün: ${nesne.urun}\nMüşteri: ${nesne.isim}\nTel: ${nesne.telefon}\nAdres: ${nesne.detay}`;
-                }
-                
-                // Müşteri onayladığı an cihazın SMS arayüzü doldurulmuş hazır metin ile ekrana gelir.
-                window.location.href = `sms:${ustaTel}?body=${encodeURIComponent(txt)}`;
-            } else {
-                alert('Talebiniz başarıyla panele iletildi!');
-            }
-
-            if(document.getElementById('yoneticiAlani').style.display === 'block') kayitlariYukle();
-        }
-
-        // Panel Kontrolleri
+        // --- KURUMSAL GİRİŞ (GÜVENLİK EKLENDİ) ---
         function kurumsalGirisYap() {
             const sifre = prompt('Kurumsal Giriş Şifresini Giriniz:');
-            if(sifre === 'Bereket2888') {
+            
+            if (sifre === 'Bereket2888') {
                 document.getElementById('yoneticiAlani').style.display = 'block';
-                kayitlariYukle();
-                urunYonetimListele();
-                window.scrollTo(0, document.body.scrollHeight);
-            } else { alert('Hatalı Şifre!'); }
-        }
-
-        function kayitlariYukle() {
-            const listeDiv = document.getElementById('panelKayitListesi');
-            listeDiv.innerHTML = '';
-            let veriler = JSON.parse(localStorage.getItem('store_records')) || [];
-
-            if(veriler.length === 0) {
-                listeDiv.innerHTML = '<p style="color:#888;">Gelen kayıt bulunmuyor.</p>';
-                return;
+                alert('Hoş geldin Şef!');
+            } else if (sifre !== null) {
+                // İzinsiz Giriş Durumu
+                alert('⚠️ HATALI ŞİFRE! Güvenlik birimi uyarıldı.');
+                const uyari = "🚨 DİKKAT! Yiğit Elektrik paneline hatalı şifre ile izinsiz giriş denemesi yapıldı!";
+                window.location.href = `sms:${USTA_TEL}?body=${encodeURIComponent(uyari)}`;
             }
-
-            veriler.forEach(v => {
-                const kutu = document.createElement('div');
-                kutu.className = 'kayit-kutu';
-                kutu.style.borderLeft = v.tur === 'Randevu' ? '4px solid #3b82f6' : '4px solid #22c55e';
-                kutu.innerHTML = `
-                    <div>
-                        <strong style="color:${v.tur === 'Randevu' ? '#3b82f6' : '#22c55e'}; font-size:12px;">${v.tur === 'Randevu' ? '📅 RANDEVU' : '🛒 SİPARİŞ'}</strong><br>
-                        ${v.tur === 'Sipariş' ? `<strong>Ürün:</strong> ${v.urun}<br>` : ''}
-                        <strong>Müşteri:</strong> ${v.isim} (${v.telefon})<br>
-                        <strong>Zaman:</strong> ${v.zaman}<br>
-                        <strong>Detay:</strong> <span style="color:#aaa;">${v.detay}</span>
-                    </div>
-                    <button class="btn-sil" onclick="kayitSil(${v.id})">Sil</button>
-                `;
-                listeDiv.appendChild(kutu);
-            });
         }
 
-        function kayitSil(id) {
-            let veriler = JSON.parse(localStorage.getItem('store_records')) || [];
-            veriler = veriler.filter(v => v.id !== id);
-            localStorage.setItem('store_records', JSON.stringify(veriler));
-            kayitlariYukle();
-        }
+        // --- SİPARİŞ VE RANDEVU SMS TETİKLEYİCİ ---
+        document.getElementById('siparisFormu').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const isim = document.getElementById('sAd').value;
+            const not = document.getElementById('sAdres').value;
+            const msg = `🛒 Yeni Sipariş: ${isim} - ${not}`;
+            window.location.href = `sms:${USTA_TEL}?body=${encodeURIComponent(msg)}`;
+        });
+
+        document.getElementById('randevuFormu').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const isim = document.getElementById('rAd').value;
+            const msg = `📅 Yeni Randevu Talebi: ${isim}`;
+            window.location.href = `sms:${USTA_TEL}?body=${encodeURIComponent(msg)}`;
+        });
     </script>
 </body>
 </html>
