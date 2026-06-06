@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiğit Elektrik | Dinamik Yetkilendirme Paneli</title>
+    <title>Yiğit Elektrik | Canlı Panel</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #1a1a1a; color: #ffffff; line-height: 1.6; text-align: center; }
@@ -54,55 +54,48 @@
 
     <div class="container">
         <div class="baslik-alan">
-            <h1>Yiğit Elektrik Kontrol Merkezi</h1>
-            <p style="color: #aaaaaa;">Dinamik Yetki Devri ve Akıllı Bildirim Altyapısı</p>
+            <h1>Yiğit Elektrik Paneli</h1>
+            <p style="color: #aaaaaa;">Doğrudan WhatsApp Altyapılı Güvenlik Sistemi</p>
         </div>
 
         <div class="hizmet-ozellikleri">
             <div class="ozellik-kart">
-                <h3>👥 Dinamik Yetki Yönetimi</h3>
-                <p>Mevcut yetkili, panel üzerinden tek bir tuşla yeni birini veya sizi tekrar admin olarak atayabilir.</p>
+                <h3>📱 Doğrudan Mesaj Hattı</h3>
+                <p>Aracı siteler olmadan, tüm uyarılar ve siparişler doğrudan kayıtlı yetkili numarasına yönlendirilir.</p>
             </div>
             <div class="ozellik-kart">
-                <h3>📲 Doğrudan Otonom Hat</h3>
-                <p>Bildirimler o an panelde kimin telefon numarası kayıtlıysa, onun uygulamasına sızdırılmadan gönderilir.</p>
+                <h3>🔑 Kolay Yetki Yönetimi</h3>
+                <p>Aşağıdaki yönetim panelinden tek tıkla şifreyi ve sahibini güncelleyebilirsiniz.</p>
             </div>
         </div>
 
-        <!-- ================= DİNAMİK YÖNETİM PANELİ ================= -->
         <div class="yonetim-paneli" id="yoneticiAlani">
             <h2 style="color: #f59e0b; margin-bottom: 15px;">🛠️ Sistem Ayarları ve Yetki Devri</h2>
             
             <div class="panel-bolum">
-                <h3 style="color: #ef4444; margin-bottom: 10px;">🚨 Aktif Yetkili Değiştirme Alanı</h3>
+                <h3 style="color: #ef4444; margin-bottom: 10px;">🚨 Aktif Yetkili Bilgileri</h3>
                 
                 <div class="form-grup">
-                    <label>Aktif Yönetici Telefon Numarası (Giriş Bildirimleri İçin)</label>
+                    <label>Yöneticinin Telefon Numarası (Mesajların Gideceği Numara)</label>
                     <input type="tel" id="panelUstaTel" placeholder="Örn: 905XXXXXXXXX">
                 </div>
                 
                 <div class="form-grup">
-                    <label>Yeni Panel Giriş Şifresi Belirle</label>
-                    <input type="text" id="panelUstaSifre" placeholder="Yeni şifreyi yazın">
+                    <label>Panel Giriş Şifresi</label>
+                    <input type="text" id="panelUstaSifre">
                 </div>
 
                 <div class="form-grup">
-                    <label>Güvenli Cihaz Anahtarı (Örn: Android, iPhone, Windows)</label>
-                    <input type="text" id="panelCihazAnahtari" placeholder="Hangi cihaz güvenli sayılsın?">
+                    <label>Güvenli Cihaz Anahtarı (Örn: iPhone, Android, Windows)</label>
+                    <input type="text" id="panelCihazAnahtari">
                 </div>
 
-                <button class="btn-onay" onclick="ayarlariCanliGuncelle()" style="background-color: #3b82f6;">Yetki ve Numaraları Güncelle 💾</button>
-            </div>
-
-            <div class="panel-bolum">
-                <h3>📦 Sistem Durumu</h3>
-                <p style="color: #22c55e;">Sistem otonom koruma modunda çalışıyor.</p>
+                <button class="btn-onay" onclick="ayarlariCanliGuncelle()" style="background-color: #3b82f6;">Ayarları Güncelle ve Kaydet 💾</button>
             </div>
             <button class="btn-iptal" onclick="oturumKapat()">Güvenli Çıkış ❌</button>
         </div>
     </div>
 
-    <!-- FORMLAR -->
     <div class="pencere-arka" id="SiparisArayuzu">
         <div class="pencere-icerik">
             <h2>🛒 Ürün Sipariş Formu</h2>
@@ -125,7 +118,6 @@
         </div>
     </div>
 
-    <!-- SOSYAL MEDYA PORTAL -->
     <div class="pencere-arka" id="SagatBaronPortali">
         <div class="pencere-icerik" style="max-width: 400px;">
             <h2>SagatBaron Hesapları</h2>
@@ -140,25 +132,23 @@
     </footer>
 
     <script>
-        // --- BAŞLANGIÇTA RESMİ YETKİLİ Sadece ARKADAŞINIZ OLACAK ---
-        const ILK_KURULUM_AYARLARI = {
-            sifre: "Bereket2888",         // Arkadaşının paneli açacak şifresi
-            telefon: "905XXXXXXXXX",     // 🚨 BURAYA ARKADAŞININ NUMARASINI YAZ (İlk bildirimler ona gitsin)
-            cihaz: "iPhone",             // Arkadaşının telefon modeli
-            webhook: "https://api.bot-sistemi.com/whatsapp/send"
+        // --- 🚨 İLK SEFERE MAHSUS KURULUM AYARLARI 🚨 ---
+        const BASTA_KAYITLI_AYARLAR = {
+            sifre: "Bereket2888",             // Arkadaşının paneli açma şifresi
+            telefon: "905011897556",         // 📱 BURAYA ŞİMDİLİK ARKADAŞININ TELEFONUNU YAZ (Başında 90 olsun)
+            cihaz: "iPhone"                  // Arkadaşının kullandığı telefon türü
         };
 
-        // Veritabanını (LocalStorage) ilk verilerle doldur
+        // Veritabanını (LocalStorage) ilk verilerle dolduruyoruz
         document.addEventListener("DOMContentLoaded", () => {
-            if(!localStorage.getItem('dyn_sifre')) localStorage.setItem('dyn_sifre', ILK_KURULUM_AYARLARI.sifre);
-            if(!localStorage.getItem('dyn_tel')) localStorage.setItem('dyn_tel', ILK_KURULUM_AYARLARI.telefon);
-            if(!localStorage.getItem('dyn_cihaz')) localStorage.setItem('dyn_cihaz', ILK_KURULUM_AYARLARI.cihaz);
-            if(!localStorage.getItem('dyn_webhook')) localStorage.setItem('dyn_webhook', ILK_KURULUM_AYARLARI.webhook);
+            if(!localStorage.getItem('v2_sifre')) localStorage.setItem('v2_sifre', BASTA_KAYITLI_AYARLAR.sifre);
+            if(!localStorage.getItem('v2_tel')) localStorage.setItem('v2_tel', BASTA_KAYITLI_AYARLAR.telefon);
+            if(!localStorage.getItem('v2_cihaz')) localStorage.setItem('v2_cihaz', BASTA_KAYITLI_AYARLAR.cihaz);
             
-            // Paneldeki kutuları doldur
-            document.getElementById('panelUstaTel').value = localStorage.getItem('dyn_tel');
-            document.getElementById('panelUstaSifre').value = localStorage.getItem('dyn_sifre');
-            document.getElementById('panelCihazAnahtari').value = localStorage.getItem('dyn_cihaz');
+            // Panel alanındaki form kutularını otomatik doldur
+            document.getElementById('panelUstaTel').value = localStorage.getItem('v2_tel');
+            document.getElementById('panelUstaSifre').value = localStorage.getItem('v2_sifre');
+            document.getElementById('panelCihazAnahtari').value = localStorage.getItem('v2_cihaz');
         });
 
         function menuyuAcKapa(e) { e.stopPropagation(); const m = document.getElementById('acilirMenü'); m.style.display = (m.style.display === 'block') ? 'none' : 'block'; }
@@ -166,27 +156,23 @@
         function pencereAc(id) { document.getElementById(id).style.display = 'flex'; }
         function pencereKapat(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Arka planda o an kim yetkiliyse onun numarasına WhatsApp fırlatan otonom motor
-        function otonomSinyalGonder(mesaj) {
-            const aktifTel = localStorage.getItem('dyn_tel');
-            const webhookUrl = localStorage.getItem('dyn_webhook');
-
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ phone: aktifTel, message: mesaj })
-            }).catch(e => console.log("Sinyal gönderildi."));
+        // --- DOĞRUDAN RESMİ WHATSAPP TETİKLEYİCİSİ (Sorunsuz Çalışan Model) ---
+        function dogrudanMesajGonder(mesajMetni) {
+            const hedefTelefon = localStorage.getItem('v2_tel');
+            // Resmi WhatsApp API linki üzerinden hiçbir harici aracı olmadan doğrudan arkadaşına yönlendirir
+            const url = `https://api.whatsapp.com/send?phone=${hedefTelefon}&text=${encodeURIComponent(mesajMetni)}`;
+            window.location.href = url;
         }
 
-        // --- AKILLI KURUMSAL GİRİŞ ALGORİTMASI ---
+        // --- AKILLI KURUMSAL GİRİŞ VE SIZMA KONTROLÜ ---
         async function kurumsalGirisYap() {
             const girilenSifre = prompt('Kurumsal Giriş Şifresini Giriniz:');
             if (girilenSifre === null) return;
 
-            // Dinamik olarak kayıtlı verileri çek
-            const gecerliSifre = localStorage.getItem('dyn_sifre');
-            const gecerliCihaz = localStorage.getItem('dyn_dyn_cihaz') || localStorage.getItem('dyn_cihaz');
+            const gecerliSifre = localStorage.getItem('v2_sifre');
+            const gecerliCihaz = localStorage.getItem('v2_cihaz');
 
+            // IP Adresini Çek
             let ipAdresi = "Bilinmiyor";
             try {
                 const ipSorgu = await fetch('https://api.ipify.org?format=json');
@@ -197,40 +183,51 @@
             const cihazBilgisi = navigator.userAgent;
             const ustaCihaziMi = cihazBilgisi.includes(gecerliCihaz);
 
-            // 1. DURUM: Her şey doğru ve giren kişi o anki kayıtlı yetkili (Arkadaşınız)
+            // 1. DURUM: Her şey doğru ve giren kişi o anki kayıtlı admin (Arkadaşınız)
             if (girilenSifre === gecerliSifre && ustaCihaziMi) {
                 document.getElementById('yoneticiAlani').style.display = 'block';
-                alert('Yönetim paneline giriş başarılı.');
+                alert('Yönetim paneline başarıyla giriş yapıldı.');
             } 
-            // 2. DURUM: Şifre doğru ama cihaz yabancı! (Birisi şifreyi kırıp sızdı)
+            // 2. DURUM: Şifre doğru ama giren cihaz YABANCI (Şifre bir şekilde çalınmış!)
             else if (girilenSifre === gecerliSifre && !ustaCihaziMi) {
                 document.getElementById('yoneticiAlani').style.display = 'block';
-                alert('Giriş Başarılı.'); // Sızanı huylandırma
+                alert('Giriş Başarılı.'); // Şüphe çekme
 
-                const ihbar = `🚨 PANELİNİZE SIZILDI!\n\nŞu anki aktif şifrenizle sisteme yabancı bir cihaz girdi!\n📌 IP Adresi: ${ipAdresi}\n📱 Cihaz: ${cihazBilgisi}`;
-                otonomSinyalGonder(ihbar); // Mesaj o an kayıtlı numaraya (arkadaşına) gider
+                const ihbarMetni = `🚨 KRİTİK GÜVENLİK İHLALİ!\n\nŞu anki aktif şifreniz doğru girilerek panele YABANCI bir cihaz tarafından sızıldı!\n\n📌 Durum: Şifre ifşa oldu!\n📌 IP Adresi: ${ipAdresi}\n📱 Sızan Cihaz Bilgisi: ${cihazBilgisi}`;
+                dogrudanMesajGonder(ihbarMetni);
             } 
-            // 3. DURUM: Şifre yanlış
+            // 3. DURUM: Şifre tamamen yanlış
             else {
                 alert('⚠️ HATALI ŞİFRE! Erişim reddedildi.');
-                otonomSinyalGonder(`🚨 Hatalı Şifre Denemesi!\nGirilen: ${girilenSifre}\nIP: ${ipAdresi}`);
+                const hataIhbar = `🚨 Sitenizde Hatalı Şifre Denemesi Yapıldı!\n\n📌 Yazılan Şifre: ${girilenSifre}\n📌 IP Adresi: ${ipAdresi}`;
+                dogrudanMesajGonder(hataIhbar);
             }
         }
 
-        // --- PANEL İÇİNDEN ANLIK YETKİ VE NUMARA DEĞİŞTİRME ---
+        // --- PANEL İÇİNDEN TEK TUŞLA YETKİ VE NUMARA DEĞİŞTİRME ---
         function ayarlariCanliGuncelle() {
             const yeniTel = document.getElementById('panelUstaTel').value;
             const yeniSifre = document.getElementById('panelUstaSifre').value;
             const yeniCihaz = document.getElementById('panelCihazAnahtari').value;
 
-            localStorage.setItem('dyn_tel', yeniTel);
-            localStorage.setItem('dyn_sifre', yeniSifre);
-            localStorage.setItem('dyn_cihaz', yeniCihaz);
+            localStorage.setItem('v2_tel', yeniTel);
+            localStorage.setItem('v2_sifre', yeniSifre);
+            localStorage.setItem('v2_cihaz', yeniCihaz);
 
-            alert('🌐 YETKİLER BAŞARIYLA DEĞİŞTİRİLDİ!\nArtık sistem yeni numarayı ve yeni cihazı tanıyacak.');
+            alert('💾 YETKİLER GÜNCELLENDİ!\nArtık sistem yeni yazdığınız numarayı ve cihazı aktif usta kabul edecek.');
         }
 
         function oturumKapat() { document.getElementById('yoneticiAlani').style.display = 'none'; }
+
+        // Form Gönderim Alanları (Müşteri sipariş geçtiğinde otomatik arkadaşına gider)
+        document.getElementById('siparisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ad = document.getElementById('sAd').value;
+            const detay = document.getElementById('sDetay').value;
+            pencereKapat('SiparisArayuzu');
+            
+            dogrudanMesajGonder(`🛒 YİĞİT ELEKTRİK - YENİ SİPARİŞ!\n\nMüşteri: ${ad}\nSipariş Detayı: ${detay}`);
+        });
     </script>
 </body>
 </html>
