@@ -12,6 +12,7 @@
             --text-main: #ffffff;
             --text-muted: #a1a1aa;
             --border: #27272a;
+            --success: #25d366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
@@ -45,178 +46,281 @@
         .grid-sistem { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .premium-kart { background: var(--bg-card); border: 1px solid var(--border); padding: 40px; border-radius: 20px; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .premium-kart:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-        .premium-kart::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); opacity: 0; transition: 0.3s; }
-        .premium-kart:hover::before { opacity: 1; }
         
         .premium-kart h3 { font-size: 22px; font-weight: 700; margin-bottom: 16px; color: #fff; }
         .premium-kart p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
         .kart-link { display: inline-flex; align-items: center; margin-top: 24px; color: var(--accent); font-weight: 700; text-decoration: none; font-size: 14px; }
-        .kart-link:hover { text-decoration: underline; }
 
-        /* WHATSAPP (KONUMU İMZA ALANINA GÖRE GÜVENLİ HALE GETİRİLDİ) */
-        .wp-destek { position: fixed; bottom: 100px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 999; transition: 0.3s; text-decoration: none; }
+        /* TRENDYOL STYLE PRODUCT GRID */
+        .urun-katalogu { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding-right: 5px; }
+        .urun-kart { background: var(--bg-main); border: 1px solid var(--border); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.2s; text-align: center; position: relative; }
+        .urun-kart:hover { border-color: var(--accent); }
+        .urun-kart.secili { border-color: var(--accent); background: rgba(245, 158, 11, 0.05); }
+        .urun-kart.secili::after { content: '✓'; position: absolute; top: 8px; right: 12px; color: var(--accent); font-weight: bold; }
+        .urun-kart h4 { font-size: 14px; margin-bottom: 5px; color: #fff; }
+        .urun-fiyat { color: var(--accent); font-weight: 700; font-size: 13px; }
+
+        /* WHATSAPP LOGO */
+        .wp-destek { position: fixed; bottom: 100px; right: 30px; background: var(--success); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 999; transition: 0.3s; text-decoration: none; }
         .wp-destek:hover { transform: scale(1.1); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
         .wp-destek svg { width: 30px; height: 30px; fill: white; }
 
-        /* MODAL SİSTEMİ */
+        /* MODAL */
         .modal-arka { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
-        .modal-icerik { background-color: var(--bg-card); padding: 40px; border-radius: 24px; width: 95%; max-width: 500px; border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-        .modal-icerik h2 { font-size: 24px; font-weight: 800; margin-bottom: 24px; text-align: center; }
+        .modal-icerik { background-color: var(--bg-card); padding: 35px; border-radius: 24px; width: 95%; max-width: 550px; border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6); max-height: 90vh; overflow-y: auto; }
+        .modal-icerik h2 { font-size: 22px; font-weight: 800; margin-bottom: 20px; text-align: center; }
         
-        .form-grup { margin-bottom: 20px; }
-        .form-grup label { display: block; color: var(--text-muted); margin-bottom: 8px; font-size: 14px; font-weight: 600; }
-        .form-grup input, .form-grup textarea { width: 100%; padding: 14px; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 10px; color: white; font-size: 15px; transition: 0.2s; }
+        .form-grup { margin-bottom: 15px; }
+        .form-grup label { display: block; color: var(--text-muted); margin-bottom: 6px; font-size: 13px; font-weight: 600; }
+        .form-grup input, .form-grup textarea, .form-grup select { width: 100%; padding: 12px; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 10px; color: white; font-size: 14px; transition: 0.2s; }
         .form-grup input:focus, .form-grup textarea:focus { border-color: var(--accent); outline: none; }
         
-        .btn-aksiyon { width: 100%; background: var(--accent); color: #000; border: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.2s; }
+        .btn-aksiyon { width: 100%; background: var(--accent); color: #000; border: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-aksiyon:hover { background: #e58e06; }
-        .btn-kapat { background: none; color: var(--text-muted); border: 1px solid var(--border); padding: 12px; border-radius: 12px; width: 100%; margin-top: 12px; cursor: pointer; font-weight: 600; }
+        .btn-kapat { background: none; color: var(--text-muted); border: 1px solid var(--border); padding: 10px; border-radius: 12px; width: 100%; margin-top: 10px; cursor: pointer; font-weight: 600; }
 
-        .yonetim-paneli { display: none; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin-top: 40px; }
+        /* KURUMSAL LOG PANEL */
+        .yonetim-paneli { display: none; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-top: 40px; }
+        .log-listesi { background: var(--bg-main); border: 1px solid var(--border); border-radius: 12px; padding: 15px; max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .log-satiri { padding: 10px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+        .log-satiri strong { color: var(--accent); }
+        .log-satiri:last-child { border-bottom: none; }
 
         /* FOOTER */
         footer { background-color: #0a0a0c; text-align: center; padding: 50px 5% 60px 5%; margin-top: 120px; border-top: 1px solid var(--border); position: relative; z-index: 10; }
-        .footer-bilgi { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+        .footer-bilgi { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
         .gelistirici-imza { font-size: 14px; color: var(--text-muted); border-top: 1px solid #1a1a1e; padding-top: 20px; display: inline-block; width: 100%; }
-        .gelistirici-imza strong { color: var(--accent); font-weight: 700; cursor: pointer; text-decoration: underline; transition: color 0.2s; }
-        .gelistirici-imza strong:hover { color: #fff; }
+        .gelistirici-imza strong { color: var(--accent); font-weight: 700; cursor: pointer; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- ÜST NAVİGASYON -->
     <div class="navbar">
         <div class="logo">YİĞİT <span>ELEKTRİK</span></div>
         <div class="menu-3nokta" onclick="menuyuTogle(event)">⋮</div>
         <div class="dropdown-menu" id="acilirMenü">
-            <button onclick="modalAc('SiparisArayuzu')">🛒 Ürünler</button>
-            <button onclick="modalAc('RandevuArayuzu')">📅 Randevular</button>
+            <button onclick="modalAc('SiparisArayuzu')">🛒 Ürün Siparişi</button>
+            <button onclick="modalAc('RandevuArayuzu')">📅 Arıza Randevusu</button>
             <button onclick="modalAc('AcilIletisimArayuzu')">🚨 Acil İletişim</button>
             <button onclick="kurumsalGirisYap()">🔑 Kurumsal Giriş</button>
         </div>
     </div>
 
-    <!-- ANASAYFA KARŞILAMA ALANI -->
     <div class="hero-section">
         <span class="hero-tag">A+ Sınıf Profesyonel İşçilik</span>
         <h1>Enerjide Kusursuz Mühendislik</h1>
         <p>Cizre genelinde akıllı ev sistemleri, yüksek gerilim otomasyonları ve kurumsal altyapı projeleriyle geleceği güvenle inşa ediyoruz.</p>
-        <a href="tel:905011897556" class="main-btn">
-            <span>Usta Çağır (7/24)</span>
-        </a>
+        <a href="tel:905011897556" class="main-btn"><span>Usta Çağır (7/24)</span></a>
     </div>
 
-    <!-- KARTLAR VE İÇERİK KONTEYNERİ -->
     <div class="container">
         <div class="grid-sistem">
             <div class="premium-kart">
                 <h3>📍 Merkez Ofis</h3>
                 <p>Yiğit Elektrik Yönetim Kompleksi<br><strong>Cizre / ŞIRNAK</strong></p>
-                <a href="https://maps.google.com" target="_blank" class="kart-link">Yol Tarifi Al →</a>
+                <a href="https://maps.google.com" target="_blank" class="kart-link" style="color:var(--accent);">Yol Tarifi Al →</a>
             </div>
-
             <div class="premium-kart">
-                <h3>📞 Kurumsal Cihaz Hattı</h3>
-                <p>Sistem otomasyon bildirimleri ve randevu onay süreçleri için aktif çağrı merkezi hattımız:</p>
+                <h3>📞 Kurumsal Hat</h3>
+                <p>Sistem otomasyon bildirimleri ve randevu süreçleri kurumsal hattımız:</p>
                 <a href="tel:905011897556" class="kart-link" style="font-size: 18px; color: var(--accent);">0501 189 75 56</a>
             </div>
-
             <div class="premium-kart">
-                <h3>⚡ Teknolojik Altyapı</h3>
-                <p>Arka planda çalışan siber güvenlik mekanizmaları sayesinde tüm sipariş ve veri logları şifreli panellerde korunur.</p>
+                <h3>⚡ Güvenli Altyapı</h3>
+                <p>Tüm sipariş girdileri ve arıza kayıtları yerel tarayıcı hafızasında loglanarak kurumsal girişte saklanır.</p>
             </div>
         </div>
 
-        <!-- GİZLİ YÖNETİCİ ALANI -->
         <div class="yonetim-paneli" id="yoneticiAlani">
-            <h2 style="margin-bottom: 24px; color: var(--accent);">🛠️ Canlı Sistem Kontrolü</h2>
-            <div class="form-grup"><label>Yönetici Telefon Hattı</label><input type="tel" id="panelUstaTel"></div>
-            <div class="form-grup"><label>Giriş Tokeni</label><input type="text" id="panelUstaSifre"></div>
-            <div class="form-grup"><label>Güvenli Cihaz İzleyici</label><input type="text" id="panelCihazAnahtari"></div>
-            <div class="form-grup"><label>Webhook Ağ Geçidi</label><input type="text" id="panelWebhookUrl"></div>
-            <button class="btn-aksiyon" onclick="ayarlariKaydet()">Ayarları Canlı Güncelle 💾</button>
+            <h2 style="color: var(--accent); margin-bottom: 10px;">🛠️ Kurumsal Sistem Kontrolü</h2>
+            <p style="font-size: 14px; color: var(--text-muted);">Gelen tüm sipariş ve randevu kayıtları aşağıda listelenmektedir:</p>
+            
+            <div class="log-listesi" id="panelLogAlani">
+                <div class="log-satiri">Henüz kaydedilmiş veri logu bulunmuyor.</div>
+            </div>
+            <button class="btn-kapat" onclick="document.getElementById('yoneticiAlani').style.display='none'" style="margin-top:20px;">Paneli Gizle</button>
         </div>
     </div>
 
-    <!-- WHATSAPP DESTEK BUTONU -->
     <a href="https://wa.me/905011897556" class="wp-destek" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.176.001 6.165 1.24 8.413 3.488 2.248 2.248 3.484 5.237 3.484 8.417 0 6.549-5.34 11.896-11.942 11.896-2.003-.001-3.975-.511-5.727-1.483L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.435 0 9.85-4.427 9.85-9.852 0-2.623-1.02-5.09-2.871-6.941C16.443 1.882 13.976 1.86 11.371 1.86c-5.435 0-9.85 4.423-9.85 9.853 0 1.624.462 3.21 1.335 4.594l-.991 3.62 3.732-.973zm11.236-4.908c-.244-.122-1.45-.713-1.674-.795-.224-.082-.387-.122-.55.122-.163.245-.632.795-.774.957-.142.163-.285.183-.53.061-.244-.122-1.03-.38-1.961-1.211-.724-.646-1.213-1.444-1.355-1.688-.142-.245-.015-.377.107-.498.11-.11.244-.285.367-.428.122-.142.163-.245.244-.408.082-.163.041-.306-.02-.428-.062-.122-.55-1.325-.754-1.815-.198-.48-.4-.414-.55-.421-.143-.007-.306-.008-.468-.008-.163 0-.428.061-.652.306-.224.245-.856.836-.856 2.039 0 1.203.876 2.364.998 2.528.122.163 1.722 2.63 4.171 3.691.583.253 1.038.404 1.394.517.586.186 1.12.16 1.542.097.47-.071 1.45-.591 1.653-1.162.204-.571.204-1.061.142-1.162-.061-.1-.224-.163-.468-.285z"/></svg>
     </a>
 
-    <!-- ARAYÜZ MODALLARI -->
-    <div class="modal-arka" id="SiparisArayuzu"><div class="modal-icerik"><h2>🛒 Ürün & Sipariş Kataloğu</h2><form id="siparisForm"><div class="form-grup"><label>İsim Soyisim</label><input type="text" id="sAd" required></div><div class="form-grup"><label>Malzeme Sipariş Listesi</label><textarea id="sDetay" rows="3" required></textarea></div><button type="submit" class="btn-aksiyon">Sipariş Kaydını Gönder</button><button type="button" class="btn-kapat" onclick="modalKapat('SiparisArayuzu')">Kapat</button></form></div></div>
+    <div class="modal-arka" id="SiparisArayuzu">
+        <div class="modal-icerik">
+            <h2>🛒 Ürün Katalogu & Sipariş</h2>
+            <label style="color:var(--text-muted); font-size:13px; margin-bottom:10px; display:block;">Lütfen Sipariş Etmek İstediğiniz Ürünü Seçin:</label>
+            
+            <div class="urun-katalogu">
+                <div class="urun-kart" onclick="urunSec(this, 'Akıllı Ev Akım Koruma Panosu', '2450 TL')">
+                    <h4>Akıllı Ev Koruma Panosu</h4>
+                    <span class="urun-fiyat">2450 TL</span>
+                </div>
+                <div class="urun-kart" onclick="urunSec(this, 'Güvenlik Kamera Seti (4lü)', '4800 TL')">
+                    <h4>4'lü Kamera Seti</h4>
+                    <span class="urun-fiyat">4800 TL</span>
+                </div>
+                <div class="urun-kart" onclick="urunSec(this, 'Otomatik Sigorta Kutusu v2', '1250 TL')">
+                    <h4>Sigorta Kutusu v2</h4>
+                    <span class="urun-fiyat">1250 TL</span>
+                </div>
+                <div class="urun-kart" onclick="urunSec(this, 'Schneider Akıllı Şalter', '1850 TL')">
+                    <h4>Akıllı Şalter</h4>
+                    <span class="urun-fiyat">1850 TL</span>
+                </div>
+            </div>
+
+            <form id="siparisForm">
+                <div class="form-grup"><label>İsim Soyisim</label><input type="text" id="sAd" required></div>
+                <div class="form-grup"><label>T.C. Kimlik / Firma No</label><input type="number" id="sTc" placeholder="Güvenlik doğrulaması için" required></div>
+                <div class="form-grup"><label>Telefon Numarası</label><input type="tel" id="sTel" placeholder="05xx" required></div>
+                <div class="form-grup"><label>Teslimat Adresi</label><textarea id="sAdres" rows="2" placeholder="Cizre / Şırnak..." required></textarea></div>
+                <button type="submit" class="btn-aksiyon" style="background:var(--success); color:#fff;">Siparişi WhatsApp'a Aktar 💬</button>
+                <button type="button" class="btn-kapat" onclick="modalKapat('SiparisArayuzu')">Kapat</button>
+            </form>
+        </div>
+    </div>
     
-    <div class="modal-arka" id="RandevuArayuzu"><div class="modal-icerik"><h2>📅 Kurumsal Arıza Randevusu</h2><form id="randevuForm"><div class="form-grup"><label>Müşteri Adı</label><input type="text" id="rAd" required></div><div class="form-grup"><label>Arıza Açıklaması</label><textarea id="rDetay" rows="3" required></textarea></div><button type="submit" class="btn-aksiyon">Randevuyu Tamamla</button><button type="button" class="btn-kapat" onclick="modalKapat('RandevuArayuzu')">Kapat</button></form></div></div>
+    <div class="modal-arka" id="RandevuArayuzu">
+        <div class="modal-icerik">
+            <h2>📅 Arıza & Bakım Randevusu</h2>
+            <form id="randevuForm">
+                <div class="form-grup"><label>Müşteri Adı Soyadı</label><input type="text" id="rAd" required></div>
+                <div class="form-grup"><label>T.C. Kimlik Numarası</label><input type="number" id="rTc" required></div>
+                <div class="form-grup"><label>İletişim Numarası</label><input type="tel" id="rTel" required></div>
+                <div class="form-grup"><label>Randevu Tarihi ve Saati</label><input type="datetime-local" id="rTarih" required></div>
+                <div class="form-grup"><label>Arıza / İş Açıklaması ve Adres</label><textarea id="rDetay" rows="3" placeholder="Arıza detayını ve tam adresinizi yazınız..." required></textarea></div>
+                <button type="submit" class="btn-aksiyon" style="background:var(--success); color:#fff;">Randevuyu WhatsApp'a Aktar 💬</button>
+                <button type="button" class="btn-kapat" onclick="modalKapat('RandevuArayuzu')">Kapat</button>
+            </form>
+        </div>
+    </div>
 
-    <div class="modal-arka" id="AcilIletisimArayuzu"><div class="modal-icerik"><h2>🚨 Acil Müdahale Ekibi</h2><div style="text-align:center;"><p style="margin-bottom:20px; color:var(--text-muted);">Cizre içi acil kısa devre ve pano yangını gibi durumlarda anında arayın:</p><a href="tel:905011897556" class="btn-aksiyon" style="text-decoration:none; display:block;">Hattı Doğrudan Ara 📞</a><button type="button" class="btn-kapat" onclick="modalKapat('AcilIletisimArayuzu')">Kapat</button></div></div></div>
+    <div class="modal-arka" id="AcilIletisimArayuzu"><div class="modal-icerik"><h2>🚨 Acil Müdahale Ekibi</h2><div style="text-align:center;"><p style="margin-bottom:20px; color:var(--text-muted);">Cizre içi acil kısa devre ve pano arızalarında doğrudan arayın:</p><a href="tel:905011897556" class="btn-aksiyon" style="text-decoration:none; display:block;">Hattı Doğrudan Ara 📞</a><button type="button" class="btn-kapat" onclick="modalKapat('AcilIletisimArayuzu')">Kapat</button></div></div></div>
 
-    <!-- SAGATBARON MEDYA PORTAL MODALI -->
     <div class="modal-arka" id="SagatBaronPortali">
         <div class="modal-icerik" style="max-width: 400px;">
             <h2 style="color: var(--accent);">SagatBaron Medya Ekosistemi</h2>
-            <p style="text-align:center; margin-bottom:20px; color:var(--text-muted);">Resmi düzenleme ve tasarım şablonları sayfaları:</p>
-            <a href="https://instagram.com/sagat_edits_official" target="_blank" class="btn-aksiyon" style="background:#e1306c; color:white; margin-bottom:12px; text-decoration:none; display:block; text-align:center;">Instagram Pro Profili</a>
+            <p style="text-align:center; margin-bottom:20px; color:var(--text-muted);">Resmi düzenleme ve şablon sayfaları:</p>
+            <a href="https://instagram.com/sagat_edits_official" target="_blank" class="btn-aksiyon" style="background:#e1306c; color:white; margin-bottom:12px; text-decoration:none; display:block; text-align:center;">Instagram Profili</a>
             <a href="https://tiktok.com/@sagatedits_official" target="_blank" class="btn-aksiyon" style="background:#000000; color:white; text-decoration:none; display:block; text-align:center; border: 1px solid var(--border);">TikTok Kanalı</a>
             <button type="button" class="btn-kapat" onclick="modalKapat('SagatBaronPortali')">Kapat</button>
         </div>
     </div>
 
-    <!-- FOOTER VE GELİŞTİRİCİ İMZASI -->
     <footer>
         <div class="footer-bilgi">📍 Adres: Cizre, Şırnak | 📞 Kurumsal Hat: 0501 189 75 56</div>
         <div class="gelistirici-imza">Sistem Tasarım & Altyapı Core: <strong onclick="modalAc('SagatBaronPortali')">SagatBaron</strong></div>
     </footer>
 
-    <!-- SİSTEMİN MOTORU (JAVASCRIPT) -->
     <script>
-        const TEKNIK_KODLAR = { sifre: "Bereket2888", telefon: "905011897556", cihaz: "Android", webhook: "https://api.bot-sistemi.com/whatsapp/send" };
-
-        document.addEventListener("DOMContentLoaded", () => {
-            if(!localStorage.getItem('v5_sifre')) localStorage.setItem('v5_sifre', TEKNIK_KODLAR.sifre);
-            if(!localStorage.getItem('v5_tel')) localStorage.setItem('v5_tel', TEKNIK_KODLAR.telefon);
-            if(!localStorage.getItem('v5_cihaz')) localStorage.setItem('v5_cihaz', TEKNIK_KODLAR.cihaz);
-            if(!localStorage.getItem('v5_webhook')) localStorage.setItem('v5_webhook', TEKNIK_KODLAR.webhook);
-            
-            document.getElementById('panelUstaTel').value = localStorage.getItem('v5_tel');
-            document.getElementById('panelUstaSifre').value = localStorage.getItem('v5_sifre');
-            document.getElementById('panelCihazAnahtari').value = localStorage.getItem('v5_cihaz');
-            document.getElementById('panelWebhookUrl').value = localStorage.getItem('v5_webhook');
-        });
+        let secilenUrun = "";
+        let secilenUrunFiyat = "";
+        const WHATSAPP_NO = "905011897556";
 
         function menuyuTogle(e) { e.stopPropagation(); const m = document.getElementById('acilirMenü'); m.style.display = (m.style.display === 'block') ? 'none' : 'block'; }
         window.onclick = function() { document.getElementById('acilirMenü').style.display = 'none'; }
         function modalAc(id) { document.getElementById(id).style.display = 'flex'; }
         function modalKapat(id) { document.getElementById(id).style.display = 'none'; }
 
-        function otonomLogGonder(msg) {
-            fetch(localStorage.getItem('v5_webhook'), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ phone: localStorage.getItem('v5_tel'), message: msg })
-            }).catch(e => {});
+        // Trendyol Ürün Seçim Fonksiyonu
+        function urunSec(element, urunAdi, fiyat) {
+            document.querySelectorAll('.urun-kart').forEach(k => k.classList.remove('secili'));
+            element.classList.add('secili');
+            secilenUrun = urunAdi;
+            secilenUrunFiyat = fiyat;
         }
 
-        async function kurumsalGirisYap() {
-            const girilen = prompt('Yetki Kodu:');
-            if (!girilen) return;
-            if (girilen === localStorage.getItem('v5_sifre') && navigator.userAgent.includes(localStorage.getItem('v5_cihaz'))) {
+        // Yerel Hafızaya Veri Ekleme ve Paneli Güncelleme
+        function logEkle(tip, veriMetni) {
+            let loglar = JSON.parse(localStorage.getItem('yigit_elektrik_loglar')) || [];
+            const zaman = new Date().toLocaleString('tr-TR');
+            loglar.unshift({ zaman, tip, veriMetni });
+            localStorage.setItem('yigit_elektrik_loglar', JSON.stringify(loglar));
+            loglariYansit();
+        }
+
+        function loglariYansit() {
+            let loglar = JSON.parse(localStorage.getItem('yigit_elektrik_loglar')) || [];
+            const alan = document.getElementById('panelLogAlani');
+            if(loglar.length === 0) {
+                alan.innerHTML = '<div class="log-satiri">Henüz kaydedilmiş veri logu bulunmuyor.</div>';
+                return;
+            }
+            alan.innerHTML = loglar.map(l => `
+                <div class="log-satiri">
+                    [${l.zaman}] <strong>${l.tip}</strong>: ${l.veriMetni}
+                </div>
+            `).join('');
+        }
+
+        // Kurumsal Giriş Şifre Kontrolü
+        function kurumsalGirisYap() {
+            const sifre = prompt("Yetki Giriş Şifresini Girin:");
+            if(sifre === "Bereket2888") {
                 document.getElementById('yoneticiAlani').style.display = 'block';
-            } else {
-                alert('Erişim Reddedildi.');
-                otonomLogGonder(`⚠️ Yetkisiz Giriş Denemesi!\nKod: ${girilen}`);
+                loglariYansit();
+                window.scrollTo({ top: document.getElementById('yoneticiAlani').offsetTop, behavior: 'smooth' });
+            } else if(sifre !== null) {
+                alert("Hatalı kod girildi!");
             }
         }
 
-        function ayarlariKaydet() {
-            localStorage.setItem('v5_tel', document.getElementById('panelUstaTel').value);
-            localStorage.setItem('v5_sifre', document.getElementById('panelUstaSifre').value);
-            localStorage.setItem('v5_cihaz', document.getElementById('panelCihazAnahtari').value);
-            localStorage.setItem('v5_webhook', document.getElementById('panelWebhookUrl').value);
-            alert('Sistem güncellendi!');
-        }
+          // SİPARİŞ FORMU GÖNDERİMİ (WHATSAPP AUTO-TEXT)
+        document.getElementById('siparisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(!secilenUrun) {
+                alert("Lütfen katalogdan bir ürün seçiniz!");
+                return;
+            }
+            
+            const ad = document.getElementById('sAd').value;
+            const tc = document.getElementById('sTc').value;
+            const tel = document.getElementById('sTel').value;
+            const adres = document.getElementById('sAdres').value;
 
-        document.getElementById('siparisForm').addEventListener('submit', function(e) { e.preventDefault(); modalKapat('SiparisArayuzu'); otonomLogGonder(`🛒 Sipariş var!\nMüşteri: ${document.getElementById('sAd').value}\nİçerik: ${document.getElementById('sDetay').value}`); alert('Alındı.'); });
-        document.getElementById('randevuForm').addEventListener('submit', function(e) { e.preventDefault(); modalKapat('RandevuArayuzu'); otonomLogGonder(`📅 Randevu Talebi!\nMüşteri: ${document.getElementById('rAd').value}\nArıza: ${document.getElementById('rDetay').value}`); alert('Kaydedildi.'); });
+            const logMetni = `Müşteri: ${ad} - Ürün: ${secilenUrun} (${secilenUrunFiyat}) - Tel: ${tel} - Adres: ${adres}`;
+            logEkle("SİPARİŞ", logMetni);
+
+            // WhatsApp Metni Hazırlama
+            const wpMesaj = `Merhaba Yiğit Elektrik, web sitenizden bir ürün beğendim sipariş vermek istiyorum.\n\n` +
+                            `🛒 *Seçilen Ürün:* ${secilenUrun}\n` +
+                            `💰 *Fiyat:* ${secilenUrunFiyat}\n` +
+                            `👤 *Müşteri:* ${ad}\n` +
+                            `🪪 *TC/Vergi No:* ${tc}\n` +
+                            `📞 *Telefon:* ${tel}\n` +
+                            `📍 *Teslimat Adresi:* ${adres}`;
+
+            modalKapat('SiparisArayuzu');
+            window.open(`https://wa.me/${WHATSAPP_NO}?text=${encodeURIComponent(wpMesaj)}`, '_blank');
+        });
+
+        // RANDEVU FORMU GÖNDERİMİ (WHATSAPP AUTO-TEXT)
+        document.getElementById('randevuForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ad = document.getElementById('rAd').value;
+            const tc = document.getElementById('rTc').value;
+            const tel = document.getElementById('rTel').value;
+            const tarih = new Date(document.getElementById('rTarih').value).toLocaleString('tr-TR');
+            const detay = document.getElementById('rDetay').value;
+
+            const logMetni = `Müşteri: ${ad} - Tarih: ${tarih} - Tel: ${tel} - Detay: ${detay}`;
+            logEkle("RANDEVU", logMetni);
+
+            // WhatsApp Metni Hazırlama
+            const wpMesaj = `Merhaba Yiğit Elektrik, kurumsal arıza/bakım randevusu oluşturmak istiyorum.\n\n` +
+                            `📅 *Randevu Tarihi:* ${tarih}\n` +
+                            `👤 *Müşteri:* ${ad}\n` +
+                            `🪪 *TC Kimlik:* ${tc}\n` +
+                            `📞 *Telefon:* ${tel}\n` +
+                            `🛠️ *Arıza Detayı & Adres:* ${detay}`;
+
+            modalKapat('RandevuArayuzu');
+            window.open(`https://wa.me/${WHATSAPP_NO}?text=${encodeURIComponent(wpMesaj)}`, '_blank');
+        });
+
+        // İlk açılışta logları yükle
+        document.addEventListener("DOMContentLoaded", loglariYansit);
     </script>
 </body>
 </html>
