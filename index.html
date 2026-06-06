@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yiğit Elektrik | Kurumsal Güvenlik ve Otomasyon</title>
     <style>
-        /* Modern & Premium CSS Sıfırlama ve Değişkenler */
+        /* Modern & Premium CSS Değişkenleri */
         :root {
             --bg-main: #121214;
             --bg-card: #1a1a1e;
@@ -56,8 +56,8 @@
         .kart-link { display: inline-flex; align-items: center; margin-top: 24px; color: var(--accent); font-weight: 700; text-decoration: none; font-size: 14px; }
         .kart-link:hover { text-decoration: underline; }
 
-        /* Hızlı Destek WhatsApp Balonu */
-        .wp-destek { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 999; transition: 0.3s; text-decoration: none; }
+        /* Hızlı Destek WhatsApp Balonu (Z-INDEX VE ALTTAN BOŞLUK AYARLANDI) */
+        .wp-destek { position: fixed; bottom: 100px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 999; transition: 0.3s; text-decoration: none; }
         .wp-destek:hover { transform: scale(1.1); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
         .wp-destek svg { width: 30px; height: 30px; fill: white; }
 
@@ -79,10 +79,10 @@
         .yonetim-paneli { display: none; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin-top: 40px; }
 
         /* Footer & İmza Alanı */
-        footer { background-color: #0a0a0c; text-align: center; padding: 40px 5%; margin-top: 120px; border-top: 1px solid var(--border); }
+        footer { background-color: #0a0a0c; text-align: center; padding: 50px 5% 60px 5%; margin-top: 120px; border-top: 1px solid var(--border); position: relative; z-index: 10; }
         .footer-bilgi { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.5px; }
         .gelistirici-imza { font-size: 14px; color: var(--text-muted); border-top: 1px solid #1a1a1e; padding-top: 20px; display: inline-block; width: 100%; }
-        .gelistirici-imza strong { color: var(--accent); font-weight: 700; cursor: pointer; }
+        .gelistirici-imza strong { color: var(--accent); font-weight: 700; cursor: pointer; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -91,7 +91,6 @@
     <div class="navbar">
         <div class="logo">YİĞİT <span>ELEKTRİK</span></div>
         <div class="menu-3nokta" onclick="menuyuTogle(event)">⋮</div>
-        <!-- UNUTULMAYAN 3 NOKTA MENÜSÜ -->
         <div class="dropdown-menu" id="acilirMenü">
             <button onclick="modalAc('SiparisArayuzu')">🛒 Ürünler</button>
             <button onclick="modalAc('RandevuArayuzu')">📅 Randevular</button>
@@ -100,7 +99,7 @@
         </div>
     </div>
 
-    <!-- DİKKAT ÇEKİCİ VİTRİN (HERO) -->
+    <!-- VİTRİN (HERO) -->
     <div class="hero-section">
         <span class="hero-tag">A+ Sınıf Profesyonel İşçilik</span>
         <h1>Enerjide Kusursuz Mühendislik</h1>
@@ -113,21 +112,18 @@
     <!-- İÇERİK ALANI -->
     <div class="container">
         <div class="grid-sistem">
-            <!-- KONUM KARTI -->
             <div class="premium-kart">
                 <h3>📍 Merkez Ofis</h3>
                 <p>Yiğit Elektrik Yönetim Kompleksi<br><strong>Cizre / ŞIRNAK</strong></p>
                 <a href="https://maps.google.com" target="_blank" class="kart-link">Yol Tarifi Al →</a>
             </div>
 
-            <!-- İLETİŞİM KARTI -->
             <div class="premium-kart">
                 <h3>📞 Kurumsal Cihaz Hattı</h3>
                 <p>Sistem otomasyon bildirimleri ve randevu onay süreçleri için aktif çağrı merkezi hattımız:</p>
                 <a href="tel:905011897556" class="kart-link" style="font-size: 18px; color: var(--accent);">0501 189 75 56</a>
             </div>
 
-            <!-- GÜVEN KARTI -->
             <div class="premium-kart">
                 <h3>⚡ Teknolojik Altyapı</h3>
                 <p>Arka planda çalışan siber güvenlik mekanizmaları sayesinde tüm sipariş ve veri logları şifreli panellerde korunur.</p>
@@ -145,7 +141,7 @@
         </div>
     </div>
 
-    <!-- WHATSAPP HIZLI DESTEK BALONU -->
+    <!-- WHATSAPP HIZLI DESTEK BALONU (KONUMU YUKARI ALINDI, ARTIK İSMİ KAPATMAZ) -->
     <a href="https://wa.me/905011897556" class="wp-destek" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.176.001 6.165 1.24 8.413 3.488 2.248 2.248 3.484 5.237 3.484 8.417 0 6.549-5.34 11.896-11.942 11.896-2.003-.001-3.975-.511-5.727-1.483L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.435 0 9.85-4.427 9.85-9.852 0-2.623-1.02-5.09-2.871-6.941C16.443 1.882 13.976 1.86 11.371 1.86c-5.435 0-9.85 4.423-9.85 9.853 0 1.624.462 3.21 1.335 4.594l-.991 3.62 3.732-.973zm11.236-4.908c-.244-.122-1.45-.713-1.674-.795-.224-.082-.387-.122-.55.122-.163.245-.632.795-.774.957-.142.163-.285.183-.53.061-.244-.122-1.03-.38-1.961-1.211-.724-.646-1.213-1.444-1.355-1.688-.142-.245-.015-.377.107-.498.11-.11.244-.285.367-.428.122-.142.163-.245.244-.408.082-.163.041-.306-.02-.428-.062-.122-.55-1.325-.754-1.815-.198-.48-.4-.414-.55-.421-.143-.007-.306-.008-.468-.008-.163 0-.428.061-.652.306-.224.245-.856.836-.856 2.039 0 1.203.876 2.364.998 2.528.122.163 1.722 2.63 4.171 3.691.583.253 1.038.404 1.394.517.586.186 1.12.16 1.542.097.47-.071 1.45-.591 1.653-1.162.204-.571.204-1.061.142-1.162-.061-.1-.224-.163-.468-.285z"/></svg>
     </a>
@@ -157,10 +153,21 @@
 
     <div class="modal-arka" id="AcilIletisimArayuzu"><div class="modal-icerik"><h2>🚨 Acil Müdahale Ekibi</h2><div style="text-align:center;"><p style="margin-bottom:20px; color:var(--text-muted);">Cizre içi acil kısa devre ve pano yangını gibi durumlarda anında arayın:</p><a href="tel:905011897556" class="btn-aksiyon" style="text-decoration:none; display:block;">Hattı Doğrudan Ara 📞</a><button type="button" class="btn-kapat" onclick="modalKapat('AcilIletisimArayuzu')">Kapat</button></div></div></div>
 
-    <!-- FOOTER VE SAGATBARON İMZASI -->
+    <!-- TIKLANDIĞINDA MEDYA HESAPLARINI AÇAN SAGATBARON SOSYAL MEDYA MODALI -->
+    <div class="modal-arka" id="SagatBaronPortali">
+        <div class="modal-icerik" style="max-width: 400px;">
+            <h2 style="color: var(--accent);">SagatBaron Medya Ekosistemi</h2>
+            <p style="text-align:center; margin-bottom:20px; color:var(--text-muted);">Resmi düzenleme ve tasarım şablonları sayfaları:</p>
+            <a href="https://instagram.com/sagat_edits_official" target="_blank" class="btn-aksiyon" style="background:#e1306c; color:white; margin-bottom:12px; text-decoration:none; display:block; text-align:center;">Instagram Pro Profili</a>
+            <a href="https://tiktok.com/@sagatedits_official" target="_blank" class="btn-aksiyon" style="background:#000000; color:white; text-decoration:none; display:block; text-align:center; border: 1px solid var(--border);">TikTok Kanalı</a>
+            <button type="button" class="btn-kapat" onclick="modalKapat('SagatBaronPortali')">Kapat</button>
+        </div>
+    </div>
+
+    <!-- FOOTER VE DÜZELTİLMİŞ İMZA ALANI -->
     <footer>
         <div class="footer-bilgi">📍 Adres: Cizre, Şırnak | 📞 Kurumsal Hat: 0501 189 75 56</div>
-        <div class="gelistirici-imza">Sistem Tasarım & Altyapı Core: <strong onclick="alert('SagatBaron Dev Ecosystem v2.0')">SagatBaron</strong></div>
+        <div class="gelistirici-imza">Sistem Tasarım & Altyapı Core: <strong onclick="modalAc('SagatBaronPortali')">SagatBaron</strong></div>
     </footer>
 
     <script>
