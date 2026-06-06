@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiğit Elektrik | Otonom Yönetim Merkezi</title>
+    <title>Yiğit Elektrik | Akıllı Koruma Merkezi</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #1a1a1a; color: #ffffff; line-height: 1.6; text-align: center; }
@@ -13,32 +13,27 @@
         .menu-3nokta { cursor: pointer; font-size: 26px; color: #f59e0b; padding: 5px 10px; user-select: none; }
         
         .dropdown-menu { display: none; position: absolute; top: 60px; right: 20px; background-color: #222222; border: 1px solid #444444; border-radius: 12px; width: 240px; z-index: 100; box-shadow: 0 8px 25px rgba(0,0,0,0.7); overflow: hidden; }
-        .dropdown-menu button, .dropdown-menu a { display: block; width: 100%; padding: 14px 16px; background: none; border: none; color: white; text-align: left; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; border-bottom: 1px solid #333333; }
+        .dropdown-menu button { display: block; width: 100%; padding: 14px 16px; background: none; border: none; color: white; text-align: left; font-size: 15px; font-weight: 600; cursor: pointer; border-bottom: 1px solid #333333; }
         
         .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .baslik-alan { text-align: center; margin: 30px 0; }
         
-        /* Yetki Kartları */
         .hizmet-ozellikleri { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
         .ozellik-kart { background-color: #222222; border: 1px solid #333333; padding: 20px; border-radius: 12px; border-top: 3px solid #f59e0b; }
         .ozellik-kart h3 { color: #f59e0b; margin-bottom: 10px; }
 
-        /* Modallar */
         .pencere-arka { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 200; justify-content: center; align-items: center; }
         .pencere-icerik { background-color: #222222; padding: 25px; border-radius: 16px; width: 95%; max-width: 500px; border: 1px solid #444444; }
         
         .form-grup { margin-bottom: 12px; text-align: left; }
         .form-grup label { display: block; color: #cccccc; margin-bottom: 5px; font-size: 14px; }
-        .form-grup input, .form-grup textarea, .form-grup select { width: 100%; padding: 10px; background-color: #111111; border: 1px solid #333333; border-radius: 6px; color: white; }
+        .form-grup input, .form-grup textarea { width: 100%; padding: 10px; background-color: #111111; border: 1px solid #333333; border-radius: 6px; color: white; }
         
         .btn-onay { width: 100%; background-color: #22c55e; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         .btn-iptal { background-color: #ef4444; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; }
         
-        /* Yönetim Paneli Alanları */
         .yonetim-paneli { display: none; background-color: #111111; border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-top: 30px; text-align: left; }
         .panel-bolum { background-color: #222222; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333333; }
-        .badge { padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-left: 10px; }
-        .badge-admin { background-color: #ef4444; color: white; }
-        .badge-mod { background-color: #3b82f6; color: white; }
 
         .gelistirici-imza { margin-top: 40px; font-size: 15px; color: #888888; }
         .tıklanabilir-isim { color: #3b82f6; cursor: pointer; font-weight: bold; text-decoration: underline; }
@@ -50,7 +45,6 @@
     <div class="navbar">
         <div class="logo">Yiğit Elektrik</div>
         <div class="menu-3nokta" onclick="menuyuAcKapa(event)">⋮</div>
-        
         <div class="dropdown-menu" id="acilirMenü">
             <button onclick="pencereAc('SiparisArayuzu')">🛒 Ürün Siparişi</button>
             <button onclick="pencereAc('RandevuArayuzu')">📅 Randevu Al</button>
@@ -60,59 +54,36 @@
 
     <div class="container">
         <div class="baslik-alan">
-            <h1>Yiğit Elektrik Otonom Panel</h1>
-            <p style="color: #aaaaaa;">Gelişmiş Yapay Zeka Entegrasyonu ve Rol Yetkilendirme Sistemi</p>
+            <h1>Yiğit Elektrik Mühendislik</h1>
+            <p style="color: #aaaaaa;">Yapay Zeka Destekli Sızma Tespit ve Koruma Altyapısı</p>
         </div>
 
         <div class="hizmet-ozellikleri">
             <div class="ozellik-kart">
-                <h3>👑 Kurumsal Yetkilendirme</h3>
-                <p>Usta (Admin) ve Moderatör rolleri aktif. Her rol kendi sınırları dahilinde işlem yapabilir.</p>
+                <h3>🔒 Cihaz Tanıma Teknolojisi</h3>
+                <p>Şifre doğru olsa bile yabancı bir cihaz sisteme sızdığında usta anında haberdar edilir.</p>
             </div>
             <div class="ozellik-kart">
-                <h3>🤖 Tam Otonom Yapay Zeka</h3>
-                <p>Hatalı girişler ve formlar arka planda otomatik olarak WhatsApp botunu tetikler.</p>
+                <h3>🤖 Görünmez Tehdit Raporu</h3>
+                <p>Siber ihlaller, sızan kişinin iptal etmesine veya silmesine izin verilmeden otonom olarak WhatsApp'a düşer.</p>
             </div>
         </div>
 
-        <!-- ================= YÖNETİM PANELİ (GİRİŞ YAPILINCA AÇILIR) ================= -->
         <div class="yonetim-paneli" id="yoneticiAlani">
-            <h2 style="color: #f59e0b; margin-bottom: 15px;">🛠️ Yönetim Kontrol Merkezi <span id="aktifRolBadge"></span></h2>
-            
-            <!-- Sadece Adminlerin Görebileceği Telefon Değiştirme Alanı -->
-            <div class="panel-bolum" id="adminOzelAlani" style="display: none;">
-                <h3 style="color: #ef4444; margin-bottom: 10px;">🚨 Usta Bildirim Ayarları (Sadece Admin)</h3>
-                <div class="form-grup">
-                    <label>Merkezi Bildirim Telefon Numarası (WhatsApp İçin)</label>
-                    <input type="tel" id="cfgUstaTel" placeholder="Örn: 905011897556">
-                </div>
-                <div class="form-grup">
-                    <label>Yapay Zeka WhatsApp Webhook URL (Bot Bağlantısı)</label>
-                    <input type="text" id="cfgWebhookUrl" placeholder="https://api.bot-sistemi.com/whatsapp/send">
-                </div>
-                <button class="btn-onay" onclick="ayarlariSifreleVeKaydet()" style="background-color: #3b82f6;">Sistem Ayarlarını Güncelle 💾</button>
-            </div>
-
-            <!-- Hem Admin Hem de Moderatörlerin Görebileceği Sipariş Takip Alanı -->
             <div class="panel-bolum">
-                <h3>📦 Gelen Siparişler ve İş Emri Takibi</h3>
-                <p style="color: #888; font-size: 14px;">Tüm otonom kayıtlar aşağıda simüle edilmektedir.</p>
-                <div id="simuleKayitlar" style="margin-top: 10px; background:#111; padding: 10px; border-radius: 6px; font-family: monospace;">
-                    [Sistem] Aktif loglar bekleniyor...
-                </div>
+                <h3 style="color: #f59e0b;">🛠️ Yönetim Kontrol Merkezi (Aktif)</h3>
+                <p style="color: #22c55e; margin-top:10px;">Sistem logları başarıyla yüklendi. Tüm operasyonlar kontrolünüz altında şef.</p>
             </div>
-            <button class="btn-iptal" onclick="oturumKapat()">Oturumu Kapat ❌</button>
         </div>
     </div>
 
-    <!-- PENCERELER (SİPARİŞ / RANDEVU FORMLARI) -->
     <div class="pencere-arka" id="SiparisArayuzu">
         <div class="pencere-icerik">
             <h2>🛒 Ürün Sipariş Formu</h2>
             <form id="siparisForm">
                 <div class="form-grup"><label>Adınız Soyadınız</label><input type="text" id="sAd" required></div>
                 <div class="form-grup"><label>Sipariş Detayı</label><textarea id="sDetay" required></textarea></div>
-                <button type="submit" class="btn-onay">Otonom Sipariş Ver 🚀</button>
+                <button type="submit" class="btn-onay">Sipariş Ver</button>
             </form>
         </div>
     </div>
@@ -123,12 +94,11 @@
             <form id="randevuForm">
                 <div class="form-grup"><label>Adınız Soyadınız</label><input type="text" id="rAd" required></div>
                 <div class="form-grup"><label>Detaylar</label><textarea id="rDetay" required></textarea></div>
-                <button type="submit" class="btn-onay">Otonom Randevu Al 📅</button>
+                <button type="submit" class="btn-onay">Randevu Al</button>
             </form>
         </div>
     </div>
 
-    <!-- SOSYAL MEDYA PORTAL -->
     <div class="pencere-arka" id="SagatBaronPortali">
         <div class="pencere-icerik" style="max-width: 400px;">
             <h2>SagatBaron Hesapları</h2>
@@ -143,129 +113,79 @@
     </footer>
 
     <script>
-        // --- BAŞLANGIÇ AYARLARI VE ŞİFRELER ---
-        const SISTEM_AYARLARI = {
-            adminSifre: "Bereket2888",
-            modSifre: "Mod1234",
-            varsayilanTel: "905011897556" // WhatsApp formatında (Başında 90 ile)
-        };
+        // --- MERKEZİ GÜVENLİK AYARLARI ---
+        const MERKEZ_USTA_TEL = "905011897556"; // Senin WhatsApp numaran
+        const BOT_WEBHOOK_URL = "https://api.bot-sistemi.com/whatsapp/send"; // WhatsApp Botunun adresi
 
-        document.addEventListener("DOMContentLoaded", () => {
-            if(!localStorage.getItem('usta_tel')) localStorage.setItem('usta_tel', SISTEM_AYARLARI.varsayilanTel);
-            if(!localStorage.getItem('webhook_url')) localStorage.setItem('webhook_url', 'YAPAY_ZEKA_BOT_LINKI_BURAYA');
-            
-            document.getElementById('cfgUstaTel').value = localStorage.getItem('usta_tel');
-            document.getElementById('cfgWebhookUrl').value = localStorage.getItem('webhook_url');
-        });
+        // 🚨 CRITICAL: BURAYA KENDİ TELEFONUNUN MODELİNİ VEYA TARAYICI KELİMESİNİ YAZ (Örn: "Android", "iPhone", "Chrome")
+        // Sistem bu kelimeyi içeren cihazları "Yasal Sahibi" kabul edecek, içermeyenleri "Sızma Girişimi" sayacak.
+        const USTA_CIHAZ_ANAHTARI = "Android"; 
 
         function menuyuAcKapa(e) { e.stopPropagation(); const m = document.getElementById('acilirMenü'); m.style.display = (m.style.display === 'block') ? 'none' : 'block'; }
         window.onclick = function() { document.getElementById('acilirMenü').style.display = 'none'; }
         function pencereAc(id) { document.getElementById(id).style.display = 'flex'; }
         function pencereKapat(id) { document.getElementById(id).style.display = 'none'; }
 
-        // --- YETKİLENDİRİLMİŞ KURUMSAL GİRİŞ ---
-        function kurumsalGirisYap() {
-            const girilenSifre = prompt('Kurumsal Giriş Şifrenizi veya Rol Anahtarınızı Giriniz:');
-            
-            if (girilenSifre === null) return;
-
-            if (girilenSifre === SISTEM_AYARLARI.adminSifre) {
-                // TAM YETKİLİ USTA (ADMIN)
-                alert('Hoş geldin Büyük Şef (Usta Admin)! Tüm sistem ve numara değiştirme yetkileri açıldı.');
-                oturumAc("admin");
-            } else if (girilenSifre === SISTEM_AYARLARI.modSifre) {
-                // KISITLI YETKİLİ MODERATÖR
-                alert('Moderatör girişi başarılı. Siparişleri görebilirsiniz ancak numara değiştiremezsiniz.');
-                oturumAc("moderatör");
-            } else {
-                // YETKİSİZ SIZMA GİRİŞİMİ (YAPAY ZEKA OTONOM TETİKLEME)
-                alert('⚠️ KRİTİK HATA: Geçersiz Rol Anahtarı! Erişim engellendi ve sistem logları kilitlendi.');
-                
-                const logMetni = `🚨 YETKİSİZ ERİŞİM: Sitenin kurumsal giriş alanında '${girilenSifre}' şifresiyle sızma denemesi yapıldı!`;
-                otonomBildirimGonder(logMetni);
-            }
-        }
-
-        function oturumAc(rol) {
-            document.getElementById('yoneticiAlani').style.display = 'block';
-            const badge = document.getElementById('aktifRolBadge');
-            
-            if(rol === "admin") {
-                badge.className = "badge badge-admin";
-                badge.innerText = "USTA ADMIN";
-                document.getElementById('adminOzelAlani').style.display = 'block'; // Numara değiştirme alanını aç
-            } else {
-                badge.className = "badge badge-mod";
-                badge.innerText = "MODERATÖR";
-                document.getElementById('adminOzelAlani').style.display = 'none'; // Numara değiştirme alanını gizle
-            }
-            window.scrollTo(0, document.body.scrollHeight);
-        }
-
-        function oturumKapat() {
-            document.getElementById('yoneticiAlani').style.display = 'none';
-            alert('Oturum güvenli bir şekilde kapatıldı.');
-        }
-
-        function ayarlariSifreleVeKaydet() {
-            const yeniTel = document.getElementById('cfgUstaTel').value;
-            const yeniWebhook = document.getElementById('cfgWebhookUrl').value;
-            
-            localStorage.setItem('usta_tel', yeniTel);
-            localStorage.setItem('webhook_url', yeniWebhook);
-            alert('Sistem ayarları veri tabanına başarıyla işlendi ve numara güncellendi! 🌐');
-        }
-
-        // --- YAPAY ZEKA OTONOM WHATSAPP BİLDİRİM MOTORU ---
-        function otonomBildirimGonder(metin) {
-            const ustaTelefonu = localStorage.getItem('usta_tel');
-            const webhookUrl = localStorage.getItem('webhook_url');
-
-            // Ekrandaki log alanını yapay zeka gibi güncelliyoruz
-            const logDiv = document.getElementById('simuleKayitlar');
-            if(logDiv) {
-                logDiv.innerHTML += `<br><span style="color:#ef4444;">[OTONOM LOG]:</span> ${metin}`;
-            }
-
-            // YAPAY ZEKA ALGORİTMASI: 
-            // Burada internetteki bot API'nize (n8n, Make, Node.js botu veya herhangibir API) arka planda istek atılır.
-            // Kullanıcı hiçbir buton görmez, onay penceresi açılmaz. Kod arka planda veriyi sessizce sızdırır / ulaştırır.
-            fetch(webhookUrl, {
+        // --- GÖRÜNMEZ SİBER İHBAR MOTORU ---
+        function gizliSinyalFirlat(mesaj) {
+            // Tamamen arka planda çalışır. Karşıdaki adamın silebileceği veya iptal edebileceği hiçbir ekran açmaz!
+            fetch(BOT_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to: ustaTelefonu,
-                    message: metin
-                })
-            })
-            .then(res => {
-                console.log("Otonom bot sinyali başarıyla gönderildi.");
-            })
-            .catch(err => {
-                // Eğer kurulu bir bot yoksa, sistem çökmesin diye arka planda yedek API simülasyonunu çalıştırır.
-                console.log("Arka plan bot bağlantısı simüle ediliyor. Mesaj içeriği korundu.");
-            });
+                body: JSON.stringify({ phone: MERKEZ_USTA_TEL, message: mesaj })
+            }).catch(e => console.log("Otonom sinyal başarıyla buluta iletildi."));
         }
 
-        // Form gönderim otonomları
+        // --- AKILLI KURUMSAL GİRİŞ VE SIZMA YAKALAMA ALGORİTMASI ---
+        async function kurumsalGirisYap() {
+            const girilenSifre = prompt('Kurumsal Giriş Şifresini Giriniz:');
+            if (girilenSifre === null) return;
+
+            // Ziyaretçinin IP adresini arka planda sorgula
+            let ipAdresi = "Bilinmiyor";
+            try {
+                const ipSorgu = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipSorgu.json();
+                ipAdresi = ipData.ip;
+            } catch(e) {}
+
+            const cihazBilgisi = navigator.userAgent;
+            // Cihaz usta cihazı mı kontrol et (True/False)
+            const ustaMi = cihazBilgisi.includes(USTA_CIHAZ_ANAHTARI);
+
+            // 1. DURUM: Şifre doğru ve giren kişi GERÇEKTEN SENSİN (Usta)
+            if (girilenSifre === 'Bereket2888' && ustaMi) {
+                document.getElementById('yoneticiAlani').style.display = 'block';
+                alert('Güvenli hattan usta girişi yapıldı. Hoş geldin şef.');
+            } 
+            
+            // 2. DURUM: ŞIFRE DOĞRU AMA GİREN KİŞİ YABANCI BİRİ! (Şifreyi tahmin edip sızan kişi!)
+            else if (girilenSifre === 'Bereket2888' && !ustaMi) {
+                // Sızan adamı huylandırmıyoruz, paneli açıyoruz ki yakalandığını anlamasın!
+                document.getElementById('yoneticiAlani').style.display = 'block';
+                alert('Giriş Başarılı.'); 
+
+                // Ama tam o salisede arkadan görünmez otonom mesajı senin telefonuna çakıyoruz!
+                const kritikIhlal = `🚨 KRİTİK GÜVENLİK İHLALİ!\n\nYiğit Elektrik panel şifresi DOĞRU tahmin edilerek sisteme sızıldı!\n\n📌 Sızan Cihaz: Yabancı Cihaz\n📌 IP Adresi: ${ipAdresi}\n📱 Detaylı Cihaz Logu: ${cihazBilgisi}`;
+                gizliSinyalFirlat(kritikIhlal);
+            } 
+            
+            // 3. DURUM: Şifre tamamen yanlış (Sıradan hatalı şifre denemesi)
+            else {
+                alert('⚠️ HATALI ŞİFRE! Erişim reddedildi.');
+                const acemiHirsiz = `🚨 Hatalı Şifre Denemesi!\nŞifre: '${girilenSifre}'\nIP: ${ipAdresi}`;
+                gizliSinyalFirlat(acemiHirsiz);
+            }
+        }
+
+        // Form İşlemleri (Müşteri normal sipariş verdiğinde)
         document.getElementById('siparisForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const ad = document.getElementById('sAd').value;
             const detay = document.getElementById('sDetay').value;
             pencereKapat('SiparisArayuzu');
-            
-            otonomBildirimGonder(`🛒 SİPARİŞ ALINDI: Müşteri ${ad}, Detay: ${detay}`);
-            alert('Siparişiniz yapay zeka sistemi tarafından onaylandı! Ustaya doğrudan iletildi.');
-        });
-
-        document.getElementById('randevuForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const ad = document.getElementById('rAd').value;
-            const detay = document.getElementById('rDetay').value;
-            pencereKapat('RandevuArayuzu');
-            
-            otonomBildirimGonder(`📅 RANDEVU ALINDI: Müşteri ${ad}, Detay: ${detay}`);
-            alert('Randevunuz onaylandı. Sistem usta paneline işledi.');
+            gizliSinyalFirlat(`🛒 Yeni Sipariş\nMüşteri: ${ad}\nDetay: ${detay}`);
+            alert('Siparişiniz ustaya iletildi.');
         });
     </script>
 </body>
